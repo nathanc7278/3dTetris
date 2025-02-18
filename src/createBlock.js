@@ -5,7 +5,7 @@ export function createL(scene) {
     const material = new THREE.MeshBasicMaterial ({color: 0x0000ff});
     let l = new THREE.Mesh( geometry, material );
     scene.add(l);
-    l.translateY(0.5);
+    l.translateY(20.5);
     l.translateZ(4.5);
     l.translateX(5);
     let lBoundingBox = new THREE.Box3(new THREE.Vector3(), new THREE.Vector3());  

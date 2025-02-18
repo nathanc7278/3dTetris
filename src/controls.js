@@ -28,12 +28,20 @@ export function handleLeftArrow(currentBlock, BB) {
     }
 }
 
+export function handleSpace(currentBlock, BB) {
+    let array = checkCollisionBorder(BB);
+    if (!array[4]) {
+        currentBlock.translateY(-1); 
+    }
+}
+
 
 function checkCollisionBorder(BB) {
     let atFront = 0;        
     let atRight = 0;        
     let atLeft = 0;         
-    let atBack = 0;         
+    let atBack = 0;      
+    let atBottom = 0;   
     if (BB.max.z === 10) {
         atFront = 1;
     }
@@ -46,7 +54,10 @@ function checkCollisionBorder(BB) {
     if (BB.min.z === 0) {
         atBack = 1;
     }
-    const array = new Array(atFront, atRight, atLeft, atBack);
+    if (BB.min.y == 0) {
+        atBottom = 1;
+    }
+    const array = new Array(atFront, atRight, atLeft, atBack, atBottom);
     console.log(array)
     return array;
 }

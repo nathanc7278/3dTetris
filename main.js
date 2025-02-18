@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { setupBoard } from './src/initialize';
 import { createL } from './src/createBlock';
-import { handleDownArrow, handleRightArrow, handleUpArrow, handleLeftArrow } from './src/controls';
+import { handleDownArrow, handleRightArrow, handleUpArrow, handleLeftArrow, handleSpace } from './src/controls';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -51,6 +51,10 @@ function onKeyDown(event) {
                 break; 
         case "ArrowRight": 
             handleRightArrow(currentBlock, BB);
+            console.log(BB);
+                break;
+        case " ": 
+            handleSpace(currentBlock, BB);
             console.log(BB);
                 break;
         default:
