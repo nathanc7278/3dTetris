@@ -18,16 +18,16 @@ controls.target.set(0, 10, 0);
 let animation_time = 0;
 let delta_animation_time;
 const clock = new THREE.Clock();
-let grid = setupBoard(scene);
+setupBoard(scene);
 
-let { l: currentBlock, blockLocation } = createL(scene);
-console.log(blockLocation);
-console.log(currentBlock);
+let { l: currentBlock, lBoundingBox: BB } = createL(scene);
 function animate() {
 	
     delta_animation_time = clock.getDelta();
     animation_time += delta_animation_time;
     
+    BB.copy(currentBlock.geometry.boundingBox).applyMatrix4(currentBlock.matrixWorld);
+
     renderer.render( scene, camera );
     controls.update();
 }
@@ -38,16 +38,20 @@ window.addEventListener('keydown', onKeyDown);
 function onKeyDown(event) {
     switch (event.key) {
         case "ArrowDown": 
-            handleDownArrow(currentBlock, blockLocation, grid);
+            handleDownArrow(currentBlock, BB);
+            console.log(BB);
                 break;
         case "ArrowUp": 
-            handleUpArrow(currentBlock, blockLocation, grid);
+            handleUpArrow(currentBlock, BB);
+            console.log(BB);
                 break; 
         case "ArrowLeft": 
-            handleLeftArrow(currentBlock, blockLocation, grid);
+            handleLeftArrow(currentBlock, BB);
+            console.log(BB);
                 break; 
         case "ArrowRight": 
-            handleRightArrow(currentBlock, blockLocation, grid);
+            handleRightArrow(currentBlock, BB);
+            console.log(BB);
                 break;
         default:
             console.log(`Key ${event.key} pressed`);

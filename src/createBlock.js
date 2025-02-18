@@ -8,9 +8,7 @@ export function createL(scene) {
     l.translateY(0.5);
     l.translateZ(4.5);
     l.translateX(5);
-    let blockLocation = [[3, 0, 4],
-                    [4, 0, 4],
-                    [5, 0, 4],
-                    [6, 0, 4]]                       
-    return { l, blockLocation };
+    let lBoundingBox = new THREE.Box3(new THREE.Vector3(), new THREE.Vector3());  
+    lBoundingBox.setFromObject(l);                   
+    return { l, lBoundingBox };
 } 

@@ -13,7 +13,7 @@ export function setupBoard(scene) { // board will be 10 by 10 by 20
     scene.add(left);
     scene.add(right);
     scene.add(bottom);
-    scene.add(top);
+    scene.add(top); 
     let grid = [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
                 [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
