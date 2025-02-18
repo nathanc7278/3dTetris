@@ -36,7 +36,7 @@ export function handleSpace(currentBlock, BB) {
 }
 
 
-function checkCollisionBorder(BB) {
+export function checkCollisionBorder(BB) {
     let atFront = 0;        
     let atRight = 0;        
     let atLeft = 0;         

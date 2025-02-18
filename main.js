@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { setupBoard } from './src/initialize';
 import { createL } from './src/createBlock';
-import { handleDownArrow, handleRightArrow, handleUpArrow, handleLeftArrow, handleSpace } from './src/controls';
+import { handleDownArrow, handleRightArrow, handleUpArrow, handleLeftArrow, handleSpace,  checkCollisionBorder } from './src/controls';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -15,17 +15,27 @@ const controls = new OrbitControls(camera, renderer.domElement);
 camera.position.set(0, 20, 20);
 controls.target.set(0, 10, 0);
 
-let animation_time = 0;
-let delta_animation_time;
 const clock = new THREE.Clock();
 setupBoard(scene);
 
+
 let { l: currentBlock, lBoundingBox: BB } = createL(scene);
+
+let animation_time = 0;
+let delta_animation_time;
+
 function animate() {
 	
     delta_animation_time = clock.getDelta();
     animation_time += delta_animation_time;
-    
+
+    if (animation_time > 2) {
+        animation_time = 0;
+        let array = checkCollisionBorder(BB);
+        if (!array[4]) {
+            currentBlock.translateY(-1); 
+        }
+    }
     BB.copy(currentBlock.geometry.boundingBox).applyMatrix4(currentBlock.matrixWorld);
 
     renderer.render( scene, camera );
