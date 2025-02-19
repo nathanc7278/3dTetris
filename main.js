@@ -29,15 +29,20 @@ function animate() {
     delta_animation_time = clock.getDelta();
     animation_time += delta_animation_time;
 
-    /*
     if (animation_time > 2) {
         animation_time = 0;
-        let array = checkCollisionBorder(BB);
-        if (!array[4]) {
-            currentBlock.translateY(-1); 
+        for (let i = 0; i < blockCoords.length; i++) {
+            
+            if ((blockCoords[i][1] - 1 < 0) ||
+                (grid[blockCoords[i][0]][blockCoords[i][1] - 1][blockCoords[i][2]] !== 0)) {
+                    return;
+            } 
+        }   
+        for (let i = 0; i < blockCoords.length; i++) {
+            blockCoords[i][1] = blockCoords[i][1] - 1;
         }
+        currentBlock.translateY(-1); 
     }
-*/
     renderer.render( scene, camera );
     controls.update();
 }

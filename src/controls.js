@@ -2,8 +2,8 @@ import * as THREE from 'three';
 
 export function handleDownArrow(currentBlock, blockCoords, grid) {
     for (let i = 0; i < blockCoords.length; i++) {
-        if ((grid[blockCoords[i][0]][blockCoords[i][1]][blockCoords[i][2] + 1] !== 0) ||
-            (blockCoords[i][2] + 1  > 9)) {
+        if ((blockCoords[i][2] + 1  > 9) || 
+            (grid[blockCoords[i][0]][blockCoords[i][1]][blockCoords[i][2] + 1] !== 0)) {
                 return;
         } 
     }   
@@ -15,8 +15,8 @@ export function handleDownArrow(currentBlock, blockCoords, grid) {
 
 export function handleUpArrow(currentBlock, blockCoords, grid) {
     for (let i = 0; i < blockCoords.length; i++) {
-        if ((grid[blockCoords[i][0]][blockCoords[i][1]][blockCoords[i][2] - 1] !== 0) ||
-            (blockCoords[i][2] + 1 < 0)) {
+        if ((blockCoords[i][2] + 1 < 0) || 
+            (grid[blockCoords[i][0]][blockCoords[i][1]][blockCoords[i][2] - 1] !== 0)) {
                 return;
         } 
     }   
@@ -29,8 +29,8 @@ export function handleUpArrow(currentBlock, blockCoords, grid) {
 
 export function handleRightArrow(currentBlock, blockCoords, grid) {
     for (let i = 0; i < blockCoords.length; i++) {
-        if ((grid[blockCoords[i][0] + 1][blockCoords[i][1]][blockCoords[i][2]] !== 0) ||
-            (blockCoords[i][0] + 1 > 9)) {
+        if ((blockCoords[i][0] + 1 > 9) ||
+            (grid[blockCoords[i][0] + 1][blockCoords[i][1]][blockCoords[i][2]] !== 0)) {
                 return;
         } 
     }   
@@ -42,8 +42,8 @@ export function handleRightArrow(currentBlock, blockCoords, grid) {
 
 export function handleLeftArrow(currentBlock, blockCoords, grid) {
     for (let i = 0; i < blockCoords.length; i++) {
-        if ((grid[blockCoords[i][0] - 1][blockCoords[i][1]][blockCoords[i][2]] !== 0) ||
-            (blockCoords[i][0] - 1 < 0)) {
+        if ((blockCoords[i][0] - 1 < 0) ||
+            (grid[blockCoords[i][0] - 1][blockCoords[i][1]][blockCoords[i][2]] !== 0)) {
                 return;
         } 
     }   
@@ -54,13 +54,13 @@ export function handleLeftArrow(currentBlock, blockCoords, grid) {
 }
 
 export function handleSpace(currentBlock, blockCoords, grid) {
-    for (let i = 0; i < blockCoords.length - 1; i++) {
-        if ((grid[blockCoords[i][0]][blockCoords[i][1] - 1][blockCoords[i][2]] !== 0) ||
-            (blockCoords[i][1] - 1 < 0)) {
+    for (let i = 0; i < blockCoords.length; i++) {
+        if ((blockCoords[i][1] - 1 < 0) ||
+            (grid[blockCoords[i][0]][blockCoords[i][1] - 1][blockCoords[i][2]] !== 0)) {
                 return;
         } 
     }   
-    for (let i = 0; i < blockCoords.length - 1; i++) {
+    for (let i = 0; i < blockCoords.length; i++) {
         blockCoords[i][1] = blockCoords[i][1] - 1;
     }
     currentBlock.translateY(-1); 
