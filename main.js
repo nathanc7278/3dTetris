@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { setupBoard } from './src/initialize';
 import { createI } from './src/createBlock';
-import { handleDownArrow, handleRightArrow, handleUpArrow, handleLeftArrow, handleSpace,  checkCollisionBorder } from './src/controls';
+import { handleDownArrow, handleRightArrow, handleUpArrow, handleLeftArrow, handleSpace } from './src/controls';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -16,19 +16,20 @@ camera.position.set(0, 20, 20);
 controls.target.set(0, 10, 0);
 
 const clock = new THREE.Clock();
-setupBoard(scene);
+let grid = setupBoard(scene);
 
 
-let { I: currentBlock, IBoundingBox: BB } = createI(scene);
+let { I: currentBlock, blockCoords: blockCoords} = createI(scene);
 
 let animation_time = 0;
-let delta_animation_time;
+let delta_animation_time
 
 function animate() {
 	
     delta_animation_time = clock.getDelta();
     animation_time += delta_animation_time;
 
+    /*
     if (animation_time > 2) {
         animation_time = 0;
         let array = checkCollisionBorder(BB);
@@ -36,8 +37,7 @@ function animate() {
             currentBlock.translateY(-1); 
         }
     }
-    BB.copy(currentBlock.geometry.boundingBox).applyMatrix4(currentBlock.matrixWorld);
-
+*/
     renderer.render( scene, camera );
     controls.update();
 }
@@ -48,28 +48,24 @@ window.addEventListener('keydown', onKeyDown);
 function onKeyDown(event) {
     switch (event.key) {
         case "ArrowDown": 
-            handleDownArrow(currentBlock, BB);
-            console.log(BB);
+            handleDownArrow(currentBlock, blockCoords, grid);
                 break;
         case "ArrowUp": 
-            handleUpArrow(currentBlock, BB);
-            console.log(BB);
+            handleUpArrow(currentBlock, blockCoords, grid);
                 break; 
         case "ArrowLeft": 
-            handleLeftArrow(currentBlock, BB);
-            console.log(BB);
+            handleLeftArrow(currentBlock, blockCoords, grid);
                 break; 
         case "ArrowRight": 
-            handleRightArrow(currentBlock, BB);
-            console.log(BB);
+            handleRightArrow(currentBlock, blockCoords, grid);
                 break;
         case " ": 
-            handleSpace(currentBlock, BB);
-            console.log(BB);
+            handleSpace(currentBlock, blockCoords, grid);
                 break;
         default:
             console.log(`Key ${event.key} pressed`);
     }
+    console.log(blockCoords);
 }
 
 

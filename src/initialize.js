@@ -14,4 +14,6 @@ export function setupBoard(scene) { // board will be 10 by 10 by 20
     scene.add(right);
     scene.add(bottom);
     scene.add(top); 
+    let grid = Array(10).fill(0).map(()=> Array(20).fill(0).map(()=>Array(10).fill(0)));
+    return grid;
 }

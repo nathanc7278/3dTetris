@@ -6,14 +6,15 @@ export function createI(scene) {
 
     let I = new THREE.Mesh( geometry, material );
     scene.add(I);
-    I.translateY(20.5);
+    I.translateY(19.5);
     I.translateZ(4.5);
     I.translateX(5);
-    let IBoundingBox = new THREE.Box3(new THREE.Vector3(), new THREE.Vector3());  
-    IBoundingBox.setFromObject(I);                   
-    return { I, IBoundingBox };
+    let blockCoords = [[3, 19, 4],
+                    [4, 19, 4],
+                    [5, 19, 4],
+                    [6, 19, 4]];                
+    return { I, blockCoords };
 } 
-
 
 
 
