@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { setupBoard } from './src/initialize';
-import { createL } from './src/createBlock';
+import { createI } from './src/createBlock';
 import { handleDownArrow, handleRightArrow, handleUpArrow, handleLeftArrow, handleSpace,  checkCollisionBorder } from './src/controls';
 
 const scene = new THREE.Scene();
@@ -19,7 +19,7 @@ const clock = new THREE.Clock();
 setupBoard(scene);
 
 
-let { l: currentBlock, lBoundingBox: BB } = createL(scene);
+let { I: currentBlock, IBoundingBox: BB } = createI(scene);
 
 let animation_time = 0;
 let delta_animation_time;
