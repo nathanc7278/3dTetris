@@ -12,8 +12,8 @@ renderer.setSize( window.innerWidth, window.innerHeight );
 document.body.appendChild( renderer.domElement );
 
 const controls = new OrbitControls(camera, renderer.domElement);
-camera.position.set(0, 20, 20);
-controls.target.set(0, 10, 0);
+camera.position.set(15, 20, 15);
+controls.target.set(0, 5, 0);
 
 const clock = new THREE.Clock();
 let grid = setupBoard(scene);
@@ -21,16 +21,18 @@ let grid = setupBoard(scene);
 
 // let { I: currentBlock, blockCoords: blockCoords} = createI(scene);
 
-let { currentBlock, blockCoords} = createO(scene);
+let { currentBlock: currentBlock, blockCoords} = createJ(scene);
 
 let animation_time = 0;
 let delta_animation_time
+
+console.log(blockCoords);
 
 function animate() {
 	
     delta_animation_time = clock.getDelta();
     animation_time += delta_animation_time;
-/*
+
     if (animation_time > 2) {
         animation_time = 0;
         for (let i = 0; i < blockCoords.length; i++) {
@@ -45,7 +47,7 @@ function animate() {
         }
         currentBlock.translateY(-1); 
     }
-        */
+
     renderer.render( scene, camera );
     controls.update();
 }
