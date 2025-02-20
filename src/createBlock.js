@@ -44,7 +44,7 @@ export function createS(scene) {
 export function createZ(scene) {
     const geometry1 = new THREE.BoxGeometry(2, 1, 1);
     const geometry2 = new THREE.BoxGeometry(2, 1, 1);
-    const material = new THREE.MeshBasicMaterial ({color: 0xff0000});
+    const material = new THREE.MeshBasicMaterial ({color: 0x00FFFF});
 
     geometry2.translate(-1, 1, 0);
     let Z1 = new THREE.Mesh( geometry1, material );
@@ -88,7 +88,7 @@ export function createT(scene){
 export function createL(scene){
     const geometry1 = new THREE.BoxGeometry(3,1,1);
     const geometry2 = new THREE.BoxGeometry(1,1,1);
-    const material = new THREE.MeshBasicMaterial ({color: 0xff00ff});
+    const material = new THREE.MeshBasicMaterial ({color: 0x32CD32});
 
     geometry2.translate(1, 1, 0)
 
@@ -101,18 +101,18 @@ export function createL(scene){
     merged.translateY(19.5);    
     merged.translateZ(4.5);
     merged.translateX(5.5);
-    let blockCoords = [[6, 19, 4],
+    let blockCoords = [[4, 19, 4],
                     [5, 19, 4],
-                    [5, 20, 4],
-                    [4, 19, 4]];    
+                    [6, 19, 4],
+                    [6, 20, 4]];    
     return { merged, blockCoords };
 }
 export function createJ(scene){
     const geometry1 = new THREE.BoxGeometry(3,1,1);
     const geometry2 = new THREE.BoxGeometry(1,1,1);
-    const material = new THREE.MeshBasicMaterial ({color: 0xff00ff});
+    const material = new THREE.MeshBasicMaterial ({color: 0x0000ff});
 
-    geometry2.translate(0,1,0)
+    geometry2.translate(-1,1,0)
 
     let J1 = new THREE.Mesh( geometry1, material );
     let J2 = new THREE.Mesh( geometry2, material );
@@ -123,9 +123,25 @@ export function createJ(scene){
     merged.translateY(19.5);    
     merged.translateZ(4.5);
     merged.translateX(5.5);
-    let blockCoords = [[6, 19, 4],
+    let blockCoords = [[4, 19, 4],
                     [5, 19, 4],
-                    [5, 20, 4],
-                    [4, 19, 4]];    
+                    [6, 19, 4],
+                    [4, 20, 4]];    
     return { merged, blockCoords };
+}
+export function createO(scene){
+    const geometry1 = new THREE.BoxGeometry(2,2,1);
+    const material = new THREE.MeshBasicMaterial ({color: 0xFFA500});
+
+    let O = new THREE.Mesh( geometry1, material );
+    scene.add(O);
+
+    O.translateY(19.5);    
+    O.translateZ(4.5);
+    O.translateX(5.5);
+    let blockCoords = [[5, 19, 4],
+                    [6, 19, 4],
+                    [5, 20, 4],
+                    [6, 20, 4]];    
+    return { O, blockCoords };
 }

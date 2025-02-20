@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { setupBoard } from './src/initialize';
-import { createI, createS, createT, createZ } from './src/createBlock';
+import { createI, createS, createT, createZ, createL, createJ, createO } from './src/createBlock';
 import { handleDownArrow, handleRightArrow, handleUpArrow, handleLeftArrow, handleSpace } from './src/controls';
 
 const scene = new THREE.Scene();
@@ -21,7 +21,7 @@ let grid = setupBoard(scene);
 
 // let { I: currentBlock, blockCoords: blockCoords} = createI(scene);
 
-let { currentBlock, blockCoords} = createT(scene);
+let { currentBlock, blockCoords} = createO(scene);
 
 let animation_time = 0;
 let delta_animation_time
@@ -30,7 +30,7 @@ function animate() {
 	
     delta_animation_time = clock.getDelta();
     animation_time += delta_animation_time;
-
+/*
     if (animation_time > 2) {
         animation_time = 0;
         for (let i = 0; i < blockCoords.length; i++) {
@@ -45,7 +45,7 @@ function animate() {
         }
         currentBlock.translateY(-1); 
     }
-        
+        */
     renderer.render( scene, camera );
     controls.update();
 }
