@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import * as BufferGeometryUtils from "three/examples/jsm/utils/BufferGeometryUtils.js"
 
 export function createI(scene) {
     const geometry = new THREE.BoxGeometry(4, 1, 1);
@@ -15,6 +16,31 @@ export function createI(scene) {
                     [6, 19, 4]];                
     return { I, blockCoords };
 } 
+
+export function createS(scene) {
+    const geometry1 = new THREE.BoxGeometry(2, 1, 1);
+    const geometry2 = new THREE.BoxGeometry(2, 1, 1);
+    const material = new THREE.MeshBasicMaterial ({color: 0xff0000});
+
+    geometry2.translate(1, 1, 0);
+    let S1 = new THREE.Mesh( geometry1, material );
+    let S2 = new THREE.Mesh( geometry2, material );
+    console.log(S1.geometry);
+    console.log(S2.geometry);
+    let mergeGeometry =  BufferGeometryUtils.mergeGeometries([S1.geometry, S2.geometry], false);
+    console.log(mergeGeometry)
+    let merged = new THREE.Mesh(mergeGeometry, material);
+    scene.add(merged);
+
+    merged.translateY(19.5);    // block coords need to be fixed
+    merged.translateZ(4.5);
+    merged.translateX(5);
+    let blockCoords = [[3, 19, 4],
+                    [4, 19, 4],
+                    [5, 19, 4],
+                    [6, 19, 4]];    
+    return { merged, blockCoords };
+}
 
 
 
