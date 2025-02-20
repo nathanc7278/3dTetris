@@ -3,7 +3,7 @@ import * as BufferGeometryUtils from "three/examples/jsm/utils/BufferGeometryUti
 
 export function createI(scene) {
     const geometry = new THREE.BoxGeometry(4, 1, 1);
-    const material = new THREE.MeshBasicMaterial ({color: 0x0000ff});
+    const material = new THREE.MeshBasicMaterial ({color: 0x00ffff});
 
     let currentBlock = new THREE.Mesh( geometry, material );
     scene.add(currentBlock);
@@ -14,7 +14,7 @@ export function createI(scene) {
                     [4, 19, 4],
                     [5, 19, 4],
                     [6, 19, 4]];                
-    return { currentBlock, blockCoords };
+    return [currentBlock, blockCoords];
 } 
 
 export function createS(scene) {
@@ -39,12 +39,12 @@ export function createS(scene) {
                     [5, 18, 4],
                     [5, 19, 4],
                     [6, 19, 4]];    
-    return { currentBlock, blockCoords };
+    return [currentBlock, blockCoords];
 }
 export function createZ(scene) {
     const geometry1 = new THREE.BoxGeometry(2, 1, 1);
     const geometry2 = new THREE.BoxGeometry(2, 1, 1);
-    const material = new THREE.MeshBasicMaterial ({color: 0x00FFFF});
+    const material = new THREE.MeshBasicMaterial ({color: 0xa1fc03});
 
     geometry2.translate(-1, 1, 0);
     let Z1 = new THREE.Mesh( geometry1, material );
@@ -60,7 +60,7 @@ export function createZ(scene) {
                     [4, 18, 4],
                     [4, 19, 4],
                     [3, 19, 4]];    
-    return { merged, blockCoords };
+    return [currentBlock, blockCoords];
 }
 
 export function createT(scene){
@@ -83,7 +83,7 @@ export function createT(scene){
                     [5, 18, 4],
                     [5, 19, 4],
                     [4, 18, 4]];    
-    return { currentBlock, blockCoords };
+    return [currentBlock, blockCoords];
 }
 export function createL(scene){
     const geometry1 = new THREE.BoxGeometry(3,1,1);
@@ -105,7 +105,7 @@ export function createL(scene){
                     [5, 18, 4],
                     [6, 18, 4],
                     [6, 19, 4]];    
-    return { currentBlock, blockCoords };
+    return [currentBlock, blockCoords];
 }
 export function createJ(scene){
     const geometry1 = new THREE.BoxGeometry(3,1,1);
@@ -127,7 +127,7 @@ export function createJ(scene){
                     [5, 18, 4],
                     [6, 18, 4],
                     [4, 19, 4]];    
-    return { currentBlock, blockCoords };
+    return [currentBlock, blockCoords];
 }
 export function createO(scene){
     const geometry1 = new THREE.BoxGeometry(2,2,1);
@@ -143,5 +143,5 @@ export function createO(scene){
                     [5, 18, 4],
                     [4, 19, 4],
                     [5, 19, 4]];    
-    return { currentBlock, blockCoords }; 
+    return [currentBlock, blockCoords];
 }
