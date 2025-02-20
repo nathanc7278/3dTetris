@@ -25,10 +25,7 @@ export function createS(scene) {
     geometry2.translate(1, 1, 0);
     let S1 = new THREE.Mesh( geometry1, material );
     let S2 = new THREE.Mesh( geometry2, material );
-    console.log(S1.geometry);
-    console.log(S2.geometry);
     let mergeGeometry =  BufferGeometryUtils.mergeGeometries([S1.geometry, S2.geometry], false);
-    console.log(mergeGeometry)
     let currentBlock = new THREE.Mesh(mergeGeometry, material);
     scene.add(currentBlock);
 

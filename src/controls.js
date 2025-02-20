@@ -1,8 +1,6 @@
 import * as THREE from 'three';
 
 export function handleDownArrow(currentBlock, blockCoords, grid) {
-    console.log(blockCoords);
-    console.log(grid);
     for (let i = 0; i < blockCoords.length; i++) {
         if ((blockCoords[i][2] + 1  > 9) || 
             (grid[blockCoords[i][0]][blockCoords[i][1]][blockCoords[i][2] + 1] !== 0)) {
