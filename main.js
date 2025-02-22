@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { setupBoard } from './src/initialize';
 import { createI, createS, createT, createZ, createL, createJ, createO } from './src/createBlock';
-import { handleDownArrow, handleRightArrow, handleUpArrow, handleLeftArrow, handleSpace } from './src/controls';
+import { handleDownArrow, handleRightArrow, handleUpArrow, handleLeftArrow, handleSpace, resetGame } from './src/controls';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -27,6 +27,7 @@ let animation_time = 0;
 let delta_animation_time
 
 let blockStopped = false;
+let blocks = [currentBlock];
 
 function animate() {
 	
@@ -41,7 +42,9 @@ function animate() {
                     blockStopped = true;
                     if (blockCoords[i][1] === 19) {
                         alert("Game Over");
-                        break;
+                        resetGame(grid, currentBlock, scene, blocks);
+                        break                        
+                        // display score and have a button to restart
                     }
             } 
         }   
@@ -78,6 +81,7 @@ function animate() {
                     block = new createO(scene);
                     break;
             }
+            blocks.push(block[0]);
             currentBlock = block[0];
             blockCoords = block[1];
             blockStopped = false;

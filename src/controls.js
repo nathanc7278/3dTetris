@@ -65,3 +65,23 @@ export function handleSpace(currentBlock, blockCoords, grid) {
     }
     currentBlock.translateY(-1); 
 }
+
+export function resetGame(grid, currentBlock, scene, blocks) {
+    // Clear the grid
+    for (let x = 0; x < grid.length; x++) {
+        for (let y = 0; y < grid[x].length; y++) {
+            for (let z = 0; z < grid[x][y].length; z++) {
+                grid[x][y][z] = 0;
+            }
+        }
+    }
+
+    // Remove all blocks from the scene
+    while (blocks.length > 0) {
+        const block = blocks.pop();
+        scene.remove(block);
+    }
+
+    // Reset the current block position
+    currentBlock.position.set(0, 0, 0);
+}
