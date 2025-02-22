@@ -39,6 +39,10 @@ function animate() {
             if ((blockCoords[i][1] - 1 < 0) ||
                 (grid[blockCoords[i][0]][blockCoords[i][1] - 1][blockCoords[i][2]] !== 0)) {
                     blockStopped = true;
+                    if (blockCoords[i][1] === 19) {
+                        alert("Game Over");
+                        break;
+                    }
             } 
         }   
         if (!blockStopped) {
