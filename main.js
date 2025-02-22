@@ -1,8 +1,10 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-import { setupBoard } from './src/initialize';
-import { createI, createS, createT, createZ, createL, createJ, createO } from './src/createBlock';
+import { setupBoard, instructions} from './src/initialize';
+import { createI, createS, createT, createZ, createL, createJ, createO, highlightPlane } from './src/createBlock';
 import { handleDownArrow, handleRightArrow, handleUpArrow, handleLeftArrow, handleSpace, resetGame } from './src/controls';
+
+instructions();
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -28,6 +30,10 @@ let delta_animation_time
 
 let blockStopped = false;
 let blocks = [currentBlock];
+
+document.getElementById('closeInstructions').addEventListener('click', () => {
+    instructions.style.display = 'none';
+});
 
 function animate() {
 	
