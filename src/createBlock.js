@@ -3,7 +3,7 @@ import * as BufferGeometryUtils from "three/examples/jsm/utils/BufferGeometryUti
 
 export function createI(scene) {
     const geometry = new THREE.BoxGeometry(4, 1, 1);
-    const material = new THREE.MeshBasicMaterial ({color: 0x00ffff});
+    const material = new THREE.MeshPhongMaterial ({color: 0x00ffff, flatShading: true, AmbientLight: 0});
 
     let currentBlock = new THREE.Mesh( geometry, material );
     scene.add(currentBlock);
@@ -20,7 +20,7 @@ export function createI(scene) {
 export function createS(scene) {
     const geometry1 = new THREE.BoxGeometry(2, 1, 1);
     const geometry2 = new THREE.BoxGeometry(2, 1, 1);
-    const material = new THREE.MeshBasicMaterial ({color: 0xff0000});
+    const material = new THREE.MeshPhongMaterial ({color: 0xff0000, flatShading: true});
 
     geometry2.translate(1, 1, 0);
     let S1 = new THREE.Mesh( geometry1, material );
@@ -41,7 +41,7 @@ export function createS(scene) {
 export function createZ(scene) {
     const geometry1 = new THREE.BoxGeometry(2, 1, 1);
     const geometry2 = new THREE.BoxGeometry(2, 1, 1);
-    const material = new THREE.MeshBasicMaterial ({color: 0xa1fc03});
+    const material = new THREE.MeshPhongMaterial ({color: 0xa1fc03, flatShading: true});
 
     geometry2.translate(-1, 1, 0);
     let Z1 = new THREE.Mesh( geometry1, material );
@@ -63,7 +63,7 @@ export function createZ(scene) {
 export function createT(scene){
     const geometry1 = new THREE.BoxGeometry(3, 1, 1);
     const geometry2 = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshBasicMaterial ({color: 0xff00ff});
+    const material = new THREE.MeshPhongMaterial ({color: 0xff00ff, flatShading: true});
 
     geometry2.translate(0,1,0)
 
@@ -85,7 +85,7 @@ export function createT(scene){
 export function createL(scene){
     const geometry1 = new THREE.BoxGeometry(3,1,1);
     const geometry2 = new THREE.BoxGeometry(1,1,1);
-    const material = new THREE.MeshBasicMaterial ({color: 0x32CD32});
+    const material = new THREE.MeshPhongMaterial ({color: 0x32CD32, flatShading: true});
 
     geometry2.translate(1, 1, 0)
 
@@ -107,7 +107,7 @@ export function createL(scene){
 export function createJ(scene){
     const geometry1 = new THREE.BoxGeometry(3,1,1);
     const geometry2 = new THREE.BoxGeometry(1,1,1);
-    const material = new THREE.MeshBasicMaterial ({color: 0x0000ff});
+    const material = new THREE.MeshPhongMaterial ({color: 0x0000ff, flatShading: true});
 
     geometry2.translate(-1,1,0)
 
@@ -128,7 +128,7 @@ export function createJ(scene){
 }
 export function createO(scene){
     const geometry1 = new THREE.BoxGeometry(2,2,1);
-    const material = new THREE.MeshBasicMaterial ({color: 0xFFA500});
+    const material = new THREE.MeshPhongMaterial ({color: 0xFFA500, flatShading: true});
 
     let currentBlock = new THREE.Mesh( geometry1, material );
     scene.add(currentBlock);

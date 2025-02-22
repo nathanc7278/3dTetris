@@ -1,6 +1,13 @@
 import * as THREE from 'three';
 
 export function setupBoard(scene) { // board will be 10 by 10 by 20
+    let lightSource = new THREE.PointLight(0xffffff, 1, 0, 1);
+    lightSource.position.set(10, 0, 10);
+    lightSource.power = 10**3;
+    const light = new THREE.AmbientLight( 0x404040 ); // soft white light
+    light.intensity = 1;
+    scene.add( light );
+    scene.add(lightSource);
     const createLine = (color, start, end) => {
         const geometry = new THREE.BufferGeometry().setFromPoints([start, end]);
         const material = new THREE.LineBasicMaterial({ 
