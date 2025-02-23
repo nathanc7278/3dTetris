@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { setupBoard, instructions} from './src/initialize';
 import { createI, createS, createT, createZ, createL, createJ, createO, highlightPlane } from './src/createBlock';
-import { handleDownArrow, handleRightArrow, handleUpArrow, handleLeftArrow, handleSpace, resetGame } from './src/controls';
+import { handleDownArrow, handleRightArrow, handleUpArrow, handleLeftArrow, handleSpace, handleShift, resetGame } from './src/controls';
 
 instructions();
 
@@ -46,7 +46,7 @@ function animate() {
             if ((blockCoords[i][1] - 1 < 0) ||
                 (grid[blockCoords[i][0]][blockCoords[i][1] - 1][blockCoords[i][2]] !== 0)) {
                     blockStopped = true;
-                    if (blockCoords[i][1] === 19) {
+                    if (blockCoords[i][1] === 19 && blockStopped) {
                         alert("Game Over");
                         resetGame(grid, currentBlock, scene, blocks);
                         break                        
@@ -122,11 +122,15 @@ function onKeyDown(event) {
         case " ": 
             handleSpace(currentBlock, blockCoords, grid);
             break;
+        case "Shift":
+            handleShift(currentBlock, blockCoords, grid);
+            break;
         default:
             console.log(`Key ${event.key} pressed`);
     }
     console.log(blockCoords);
 }
+
 
 
 

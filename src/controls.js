@@ -66,6 +66,27 @@ export function handleSpace(currentBlock, blockCoords, grid) {
     currentBlock.translateY(-1); 
 }
 
+export function handleShift(currentBlock, blockCoords, grid) {
+    let atBottom = false;
+    while (!atBottom) {
+        for (let i = 0; i < blockCoords.length; i++) {
+            if ((blockCoords[i][1] - 1 < 0) ||
+                (grid[blockCoords[i][0]][blockCoords[i][1] - 1][blockCoords[i][2]] !== 0)) {
+                    atBottom = true;
+                    break;
+            } 
+        }  
+        if (atBottom) {
+            break;
+        }
+        for (let i = 0; i < blockCoords.length; i++) {
+            blockCoords[i][1] = blockCoords[i][1] - 1;
+        }
+        currentBlock.translateY(-1); 
+    }
+}
+
+
 export function resetGame(grid, currentBlock, scene, blocks) {
     // Clear the grid
     for (let x = 0; x < grid.length; x++) {
