@@ -86,7 +86,6 @@ export function handleShift(currentBlock, blockCoords, grid) {
     }
 }
 
-
 export function resetGame(grid, currentBlock, scene, blocks) {
     // Clear the grid
     for (let x = 0; x < grid.length; x++) {
@@ -96,13 +95,9 @@ export function resetGame(grid, currentBlock, scene, blocks) {
             }
         }
     }
-
     // Remove all blocks from the scene
     while (blocks.length > 0) {
         const block = blocks.pop();
         scene.remove(block);
     }
-
-    // Reset the current block position
-    currentBlock.position.set(0, 0, 0);
 }

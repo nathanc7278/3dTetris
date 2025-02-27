@@ -12,12 +12,13 @@ export function instructions(){
     instructions.style.display = 'none';
     instructions.innerHTML = `
         <h3>Game Instructions</h3>
-        <p>Arrow Up: Move Up</p>
-        <p>Arrow Down: Move Down</p>
-        <p>Arrow Left: Move Left</p>
-        <p>Arrow Right: Move Right</p>
-        <p>Space: Drop</p>
-        <button id="closeInstructions">Close</button>
+        <ul>
+            <li>Use the arrow keys to move the block along the horizontal plane</li>
+            <li>Use the space bar to drop the block faster</li>
+            <li>Use the shift key to hard drop a block</li>
+            <li>Complete a plane to clear it</li>
+            <li>Game over if the blocks reach the top</li>
+        </ul>
     `;
     document.body.appendChild(instructions);
     
@@ -31,6 +32,23 @@ export function instructions(){
     toggleInstructions.addEventListener('click', () => {
         instructions.style.display = instructions.style.display === 'none' ? 'block' : 'none';
     });
+}
+
+export function initialScore() {
+    const score = document.createElement('div');
+    score.style.position = 'fixed';
+    score.style.top = '30px';
+    score.style.left = '10px';
+    score.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    score.style.color = 'white';
+    score.style.padding = '10px';
+    score.style.display = 'block';
+    score.innerHTML = `
+        <h3>Score</h3>
+        <p id="score">0</p>
+    `;
+    document.body.appendChild(score);
+    return score;
 }
 
 export function setupBoard(scene) { // board will be 10 by 10 by 20
