@@ -172,3 +172,55 @@ export function createO(scene){
 
     return [currentBlock, blockCoords];
 }
+
+export function createMagicBlock(scene) {
+    const geometry = new THREE.BoxGeometry(2, 2, 2);
+
+    const vertexShader = `
+        varying vec2 vUv;
+        void main() {
+            vUv = uv;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+    `;
+
+    const fragmentShader = `
+        uniform float time;
+        varying vec2 vUv;
+        void main() {
+            vec3 color = vec3(0.5 + 0.5 * cos(time + vUv.xyx + vec3(0, 2, 4)));
+            gl_FragColor = vec4(color, 1.0);
+        }
+    `;
+
+    const material = new THREE.ShaderMaterial({
+        uniforms: {
+            time: { value: 0 }
+        },
+        vertexShader: vertexShader,
+        fragmentShader: fragmentShader,
+        emissive: 0xcccccc,
+        emissiveIntensity: 1,
+        flatShading: true
+    });
+
+    let magicBlock = new THREE.Mesh(geometry, material);
+    scene.add(magicBlock);
+
+    magicBlock.translateY(19);
+    magicBlock.translateZ(4.5);
+    magicBlock.translateX(5);
+    let blockCoords = [[4, 18, 4],
+                       [5, 18, 4],
+                       [4, 19, 4],
+                       [5, 19, 4]];
+
+    // Update the time uniform in the render loop
+    function animate() {
+        requestAnimationFrame(animate);
+        material.uniforms.time.value += 0.05;
+    }
+    animate();
+
+    return [magicBlock, blockCoords];
+}

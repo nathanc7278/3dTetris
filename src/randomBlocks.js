@@ -1,7 +1,15 @@
 import * as THREE from 'three';
-import { createI, createS, createT, createZ, createL, createJ, createO } from './createBlock';
+import { createI, createS, createT, createZ, createL, createJ, createO, createMagicBlock} from './createBlock';
+
+let blockCounter = 0;
 
 export function generateRandomBlock(scene) {
+    blockCounter++;
+    if (blockCounter === 8) {
+        blockCounter = 0;
+        return createMagicBlock(scene);
+    }
+
     let random = Math.floor(Math.random() * 7);
     switch(random) {
         case 0:

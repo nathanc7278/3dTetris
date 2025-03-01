@@ -1,6 +1,7 @@
 import { generateRandomBlock } from './randomBlocks';
 import { updateHighlightPlane, highlightPlane} from './createBlock';
 import { handleDownArrow, handleRightArrow, handleUpArrow, handleLeftArrow, handleSpace, handleShift, resetGame } from './controls';
+import { exp } from 'three/tsl';
 
 export function startGame(scene, camera, renderer, controls, clock, grid, currentBlock, blockCoords, highlight) {
     let animation_time = 0;
@@ -8,12 +9,24 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
     let blockStopped = false;
     let blocks = [currentBlock];
     let score = 0;
+    let isMagicBlock = false;
+    let magicBlockTimer = 0;
 
     function animate() {
         delta_animation_time = clock.getDelta();
         animation_time += delta_animation_time;
 
-        if (animation_time > 2) {
+        if (isMagicBlock) {
+            magicBlockTimer += delta_animation_time;
+            if (magicBlockTimer > 5) {
+                isMagicBlock = false;
+                magicBlockTimer = 0;
+            }
+        }
+
+        let speedMultiplier = isMagicBlock ? 0.5 : 0.2;
+
+        if (animation_time > 2 * speedMultiplier) {
             animation_time = 0;
             for (let i = 0; i < blockCoords.length; i++) {
                 if ((blockCoords[i][1] - 1 < 0) ||
@@ -40,9 +53,12 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
                     grid[blockCoords[i][0]][blockCoords[i][1]][blockCoords[i][2]] = 1;
                 }
                 let block = generateRandomBlock(scene);
+                // Check if the new block is a magic block
+                isMagicBlock = block[0].isMagicBlock || false;
+
                 // Update score
                 score += 10;
-                console.log(`Score: ${score}`);
+                updateScore(score);
 
                 blocks.push(block[0]);
                 currentBlock = block[0];
@@ -89,4 +105,13 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
         }
         console.log(blockCoords);
     }
+}
+
+export function clearLevel(grid, currentBlock, scene, blocks) {
+    
+}
+
+export function updateScore(score) {
+    let scoreElement = document.getElementById("score");
+    scoreElement.innerHTML = `Score: ${score}`;
 }
