@@ -23,12 +23,12 @@ let grid = setupBoard(scene);
 
 let block = createI(scene);
 let currentBlock = block[0];
-let blockCoords = block[1][0];
-
+let orientation = block[2];
+let blockCoords = block[1];
 // Create and store the highlight plane
 let highlight = highlightPlane(scene, currentBlock);
 
-startGame(scene, camera, renderer, controls, clock, grid, currentBlock, blockCoords, block[1], highlight);
+startGame(scene, camera, renderer, controls, clock, grid, currentBlock, orientation, blockCoords, highlight);
 
 
 
