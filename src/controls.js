@@ -15,7 +15,8 @@ export function handleDownArrow(currentBlock, blockCoords, orientation, grid) {
             orientation[i][j][2] += 1; 
         }
     }
-    currentBlock.translateZ(1); 
+    
+    currentBlock.position.z += 1; 
 }
 
 export function handleUpArrow(currentBlock, blockCoords, orientation, grid) {
@@ -33,7 +34,7 @@ export function handleUpArrow(currentBlock, blockCoords, orientation, grid) {
             orientation[i][j][2] -= 1; 
         }
     }
-    currentBlock.translateZ(-1); 
+    currentBlock.position.z -= 1; 
 
 }
 
@@ -52,7 +53,7 @@ export function handleRightArrow(currentBlock, blockCoords, orientation, grid) {
             orientation[i][j][0] += 1; 
         }
     }
-    currentBlock.translateX(1);
+    currentBlock.position.x += 1; 
 }
 
 export function handleLeftArrow(currentBlock, blockCoords, orientation, grid) {
@@ -70,7 +71,7 @@ export function handleLeftArrow(currentBlock, blockCoords, orientation, grid) {
             orientation[i][j][0] -= 1; 
         }
     }
-    currentBlock.translateX(-1); 
+    currentBlock.position.x -= 1; 
 }
 
 export function handleSpace(currentBlock, blockCoords, orientation, grid) {
@@ -88,7 +89,7 @@ export function handleSpace(currentBlock, blockCoords, orientation, grid) {
             orientation[i][j][1] -= 1; 
         }
     }
-    currentBlock.translateY(-1); 
+    currentBlock.position.y -= 1; 
 }
 
 export function handleShift(currentBlock, blockCoords, grid) {
@@ -107,7 +108,7 @@ export function handleShift(currentBlock, blockCoords, grid) {
         for (let i = 0; i < blockCoords.length; i++) {
             blockCoords[i][1] = blockCoords[i][1] - 1;
         }
-        currentBlock.translateY(-1); 
+        currentBlock.position.y -= 1; 
     }
 }
 
@@ -123,7 +124,7 @@ export function handleZ(currentBlock, blockCoords, index, orientation, grid) {
         }
     }   
     index += 1;
-    currentBlock.rotateZ(Math.PI / 2.0);
+    currentBlock.rotation.z =(Math.PI / 2.0);
     if (index == orientation.length) {
         blockCoords = orientation[0];
     } else {
@@ -153,5 +154,3 @@ export function resetGame(grid, scene, blocks) {
     // Reset the current block position
     return true;
 }
-
-
