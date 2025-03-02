@@ -93,20 +93,28 @@ export function handleZ(currentBlock, blockCoords, index, orientation, grid) {
     let next = (index + 1) % orientation.length;
     
     for (let i = 0; i < orientation[next].length; i++) {
-        if (blockCoords[0] + orientation[next][i][0] - 1 < 0 ||
-            blockCoords[0] + orientation[next][i][0] + 1 > 10 ||
-            blockCoords[2] + orientation[next][i][2] - 1 < 0 ||
-            blockCoords[2] + orientation[next][i][2] + 1 > 10 ||
-            blockCoords[1] + orientation[next][i][1] - 1 < 0 ||
-            (grid[blockCoords[0] + orientation[next][i][0]]
-                 [blockCoords[1] + orientation[next][i][1]]
-                 [blockCoords[2] + orientation[next][i][2]] !== 0)) {
-               return;
+        let nextX = blockCoords[0] + orientation[next][i][0];
+        let nextY = blockCoords[1] + orientation[next][i][1];
+        let nextZ = blockCoords[2] + orientation[next][i][2];
+
+        if (nextX < 0 || nextX > 9 ||
+            nextY < 0 || nextY > 19 ||
+            nextZ < 0 || nextZ > 9 ||
+            (grid[nextX][nextY][nextZ] !== 0)) {
+               return index;
         }
     }   
-    index += 1;
-    index = index % orientation.length;
-    currentBlock.rotation.z =(Math.PI / 2.0);
+    index = (index + 1) % orientation.length;
+    if (index == 1) {
+        currentBlock.rotation.z = Math.PI / 2.0;
+    } else if (index == 2) {
+        currentBlock.rotation.x = Math.PI / 2.0;
+    } else if (index == 0) {
+        currentBlock.rotation.z = 0;
+        currentBlock.rotation.x = 0;
+    }
+    return index;
+    
 }
 
 export function resetGame(grid, scene, blocks) {

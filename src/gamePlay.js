@@ -12,7 +12,7 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
     let isMagicBlock = false;
     let magicBlockTimer = 0;
     let index = 0;
-    console.log(orientation)
+    
     function animate() {
         delta_animation_time = clock.getDelta();
         animation_time += delta_animation_time;
@@ -106,7 +106,7 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
                 handleShift(currentBlock, blockCoords, index, orientation, grid);
                 break;
             case "z":
-                handleZ(currentBlock, blockCoords, index, orientation, grid);
+                index = handleZ(currentBlock, blockCoords, index, orientation, grid);
                 console.log(index)
                 break;
             default:

@@ -38,10 +38,10 @@ export function createI(scene) {
             [0, 2, 0],
             [0, 3, 0]];
     orientation.push(temp);
-    temp = [[0, 0, 1],
+    temp = [[0, 0, 0],
+            [0, 0, 1],
             [0, 0, 2],
-            [0, 0, 3],
-            [0, 0, 4]];
+            [0, 0, 3]];
     orientation.push(temp);
     currentBlock.translateY(19.5);
     currentBlock.translateZ(0.5);
@@ -251,9 +251,9 @@ export function createO(scene){
             [0, 0, 3],
             [0, 0, 4]];
     orientation.push(temp);
-    currentBlock.translateY(19.5);
-    currentBlock.translateZ(0.5);
-    currentBlock.translateX(2);
+    currentBlock.position.y += 19.5;
+    currentBlock.position.z += 0.5;
+    currentBlock.position.z += 2.0;
     let blockCoords = [0, 19, 0];
     return [currentBlock, blockCoords, orientation];
 }
