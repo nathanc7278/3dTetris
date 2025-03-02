@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { setupBoard, instructions, initialScore } from './src/initialize';
-import { createJ, highlightPlane } from './src/createBlock';
+import { createI, highlightPlane } from './src/createBlock';
 import { startGame } from './src/gamePlay';
 
 instructions();
@@ -21,16 +21,17 @@ controls.target.set(0, 5, 0);
 const clock = new THREE.Clock();
 let grid = setupBoard(scene);
 
-let block = createJ(scene);
+let block = createI(scene);
 let currentBlock = block[0];
-let blockCoords = block[1];
+let blockCoords = block[1][0];
 
 // Create and store the highlight plane
 let highlight = highlightPlane(scene, currentBlock);
 
-startGame(scene, camera, renderer, controls, clock, grid, currentBlock, blockCoords, highlight);
+startGame(scene, camera, renderer, controls, clock, grid, currentBlock, blockCoords, block[1], highlight);
 
 
 
 
 
+ 

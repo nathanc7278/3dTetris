@@ -1,9 +1,9 @@
 import { generateRandomBlock } from './randomBlocks';
 import { updateHighlightPlane, highlightPlane} from './createBlock';
-import { handleDownArrow, handleRightArrow, handleUpArrow, handleLeftArrow, handleSpace, handleShift, resetGame } from './controls';
+import { handleDownArrow, handleRightArrow, handleUpArrow, handleLeftArrow, handleSpace, handleShift, handleZ, resetGame } from './controls';
 import { exp } from 'three/tsl';
 
-export function startGame(scene, camera, renderer, controls, clock, grid, currentBlock, blockCoords, highlight) {
+export function startGame(scene, camera, renderer, controls, clock, grid, currentBlock, blockCoords, orientation, highlight) {
     let animation_time = 0;
     let delta_animation_time;
     let blockStopped = false;
@@ -11,6 +11,7 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
     let score = 0;
     let isMagicBlock = false;
     let magicBlockTimer = 0;
+    let index = 0;
 
     function animate() {
         delta_animation_time = clock.getDelta();
@@ -26,7 +27,7 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
 
         let speedMultiplier = isMagicBlock ? 0.5 : 0.2;
 
-        if (animation_time > 2 * speedMultiplier) {
+        if (animation_time > 2 / speedMultiplier) {
             animation_time = 0;
             for (let i = 0; i < blockCoords.length; i++) {
                 if ((blockCoords[i][1] - 1 < 0) ||
@@ -53,6 +54,7 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
                     grid[blockCoords[i][0]][blockCoords[i][1]][blockCoords[i][2]] = 1;
                 }
                 let block = generateRandomBlock(scene);
+                index = 0;
                 // Check if the new block is a magic block
                 isMagicBlock = block[0].isMagicBlock || false;
 
@@ -62,7 +64,7 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
 
                 blocks.push(block[0]);
                 currentBlock = block[0];
-                blockCoords = block[1];
+                blockCoords = block[1][0];
                 blockStopped = false;
                 scene.remove(highlight);
                 // Create a new highlight plane for the new block
@@ -79,26 +81,30 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
     function onKeyDown(event) {
         switch (event.key) {
             case "ArrowDown": 
-                handleDownArrow(currentBlock, blockCoords, grid);
+                handleDownArrow(currentBlock, blockCoords, orientation, grid);
                 updateHighlightPlane(highlight, currentBlock);
                 break;
             case "ArrowUp": 
-                handleUpArrow(currentBlock, blockCoords, grid);
+                handleUpArrow(currentBlock, blockCoords, orientation, grid);
                 updateHighlightPlane(highlight, currentBlock);
                 break; 
             case "ArrowLeft": 
-                handleLeftArrow(currentBlock, blockCoords, grid);
+                handleLeftArrow(currentBlock, blockCoords, orientation, grid);
                 updateHighlightPlane(highlight, currentBlock);
                 break; 
             case "ArrowRight": 
-                handleRightArrow(currentBlock, blockCoords, grid);
+                handleRightArrow(currentBlock, blockCoords, orientation, grid);
                 updateHighlightPlane(highlight, currentBlock);
                 break;
             case " ": 
-                handleSpace(currentBlock, blockCoords, grid);
+                handleSpace(currentBlock, blockCoords, orientation, grid);
                 break;
             case "Shift":
                 handleShift(currentBlock, blockCoords, grid);
+                break;
+            case "z":
+                index = handleZ(currentBlock, blockCoords, index, orientation, grid);
+                console.log(index)
                 break;
             default:
                 console.log(`Key ${event.key} pressed`);

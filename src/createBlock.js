@@ -33,8 +33,19 @@ export function createI(scene) {
                     [4, 19, 4],
                     [5, 19, 4],
                     [6, 19, 4]];                
-
-    return [currentBlock, blockCoords];
+    let orientation = [];
+    orientation.push(blockCoords);
+    blockCoords = [[4, 19, 4],
+                    [4, 18, 4],
+                    [4, 17, 4],
+                    [4, 16, 4]];
+    orientation.push(blockCoords);
+    blockCoords = [[4, 19, 3],
+                    [4, 19, 4],
+                    [4, 19, 5],
+                    [4, 19, 6]];
+    orientation.push(blockCoords);
+    return [currentBlock, orientation];
 } 
 
 export function createS(scene) {
@@ -56,8 +67,9 @@ export function createS(scene) {
                     [5, 18, 4],
                     [5, 19, 4],
                     [6, 19, 4]];    
-
-    return [currentBlock, blockCoords];
+    let orientation = [];
+    orientation.push(blockCoords);
+    return [currentBlock, orientation];
 }
 
 export function createZ(scene) {
@@ -79,8 +91,9 @@ export function createZ(scene) {
                     [4, 18, 4],
                     [4, 19, 4],
                     [3, 19, 4]];    
-
-    return [currentBlock, blockCoords];
+    let orientation = [];
+    orientation.push(blockCoords);
+    return [currentBlock, orientation];
 }
 
 export function createT(scene){
@@ -103,8 +116,9 @@ export function createT(scene){
                     [5, 18, 4],
                     [5, 19, 4],
                     [4, 18, 4]];    
-
-    return [currentBlock, blockCoords];
+    let orientation = [];
+    orientation.push(blockCoords);
+    return [currentBlock, orientation];
 }
 
 export function createL(scene){
@@ -127,8 +141,9 @@ export function createL(scene){
                     [5, 18, 4],
                     [6, 18, 4],
                     [6, 19, 4]];    
-
-    return [currentBlock, blockCoords];
+    let orientation = [];
+    orientation.push(blockCoords);
+    return [currentBlock, orientation];
 }
 
 export function createJ(scene){
@@ -151,8 +166,9 @@ export function createJ(scene){
                     [5, 18, 4],
                     [6, 18, 4],
                     [4, 19, 4]];    
-
-    return [currentBlock, blockCoords];
+    let orientation = [];
+    orientation.push(blockCoords);
+    return [currentBlock, orientation];
 }
 
 export function createO(scene){
@@ -169,8 +185,9 @@ export function createO(scene){
                     [5, 18, 4],
                     [4, 19, 4],
                     [5, 19, 4]];    
-
-    return [currentBlock, blockCoords];
+    let orientation = [];
+    orientation.push(blockCoords);
+    return [currentBlock, orientation];
 }
 
 export function createMagicBlock(scene) {
