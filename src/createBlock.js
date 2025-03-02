@@ -33,19 +33,19 @@ export function createI(scene) {
                 [3, 0, 0]];                
     let orientation = [];
     orientation.push(temp);
-    temp = [[0, 0, 0],
-            [0, 1, 0],
-            [0, 2, 0],
-            [0, 3, 0]];
+    temp = [[2, -2, 0],
+            [2, -1, 0],
+            [2, 0, 0],
+            [2, 1, 0]];
     orientation.push(temp);
-    temp = [[0, 0, 0],
-            [0, 0, 1],
-            [0, 0, 2],
-            [0, 0, 3]];
+    temp = [[2, 0, -2],
+            [2, 0, -1],
+            [2, 0, 0],
+            [2, 0, 1]];
     orientation.push(temp);
-    currentBlock.translateY(19.5);
-    currentBlock.translateZ(0.5);
-    currentBlock.translateX(2);
+    currentBlock.position.x=(2);
+    currentBlock.position.y=(19.5);
+    currentBlock.position.z=0.5;
     let blockCoords = [0, 19, 0];
     return [currentBlock, blockCoords, orientation];
 } 
@@ -81,7 +81,7 @@ export function createS(scene) {
     currentBlock.translateY(19.5);
     currentBlock.translateZ(0.5);
     currentBlock.translateX(2);
-    let blockCoords = [0, 19, 0];
+    let blockCoords = [2, 19, 0];
     return [currentBlock, blockCoords, orientation];
 }
 

@@ -105,14 +105,25 @@ export function handleZ(currentBlock, blockCoords, index, orientation, grid) {
         }
     }   
     index = (index + 1) % orientation.length;
+    currentBlock.position.x -= blockCoords[0];
+    currentBlock.position.y -= blockCoords[1];
+    currentBlock.position.z -= blockCoords[2];
     if (index == 1) {
-        currentBlock.rotation.z = Math.PI / 2.0;
+        currentBlock.rotateOnWorldAxis(new THREE.Vector3(0, 0, 1), Math.PI / 2.0);
+        currentBlock.position.x += 0.5;
+        currentBlock.position.y -= 0.5;
     } else if (index == 2) {
-        currentBlock.rotation.x = Math.PI / 2.0;
+        currentBlock.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0), Math.PI / 2.0);
+        currentBlock.position.y += 0.5;
+        currentBlock.position.z -= 0.5;
     } else if (index == 0) {
-        currentBlock.rotation.z = 0;
-        currentBlock.rotation.x = 0;
+        currentBlock.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), Math.PI / 2.0);
     }
+    currentBlock.position.x += blockCoords[0];
+    currentBlock.position.y += blockCoords[1];
+    currentBlock.position.z += blockCoords[2];
+    
+    
     return index;
     
 }
