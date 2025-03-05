@@ -25,10 +25,11 @@ let block = createI(scene);
 let currentBlock = block[0];
 let orientation = block[2];
 let blockCoords = block[1];
+let typeBlock = block[3];
 // Create and store the highlight plane
 let highlight = highlightPlane(scene, currentBlock);
 
-startGame(scene, camera, renderer, controls, clock, grid, currentBlock, orientation, blockCoords, highlight);
+startGame(scene, camera, renderer, controls, clock, grid, currentBlock, orientation, blockCoords, highlight, typeBlock);
 
 
 

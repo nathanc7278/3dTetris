@@ -1,4 +1,5 @@
 import * as THREE from 'three';
+import { rotateI } from './rotation';
 
 export function handleDownArrow(currentBlock, blockCoords, index, orientation, grid) {
     for (let i = 0; i < orientation[index].length; i++) {
@@ -89,7 +90,7 @@ export function handleShift(currentBlock, blockCoords, index, orientation, grid)
 }
 
 
-export function handleZ(currentBlock, blockCoords, index, orientation, grid) {
+export function handleZ(currentBlock, blockCoords, index, orientation, grid, typeBlock) {
     let next = (index + 1) % orientation.length;
     
     for (let i = 0; i < orientation[next].length; i++) {
@@ -108,18 +109,12 @@ export function handleZ(currentBlock, blockCoords, index, orientation, grid) {
     currentBlock.position.x -= blockCoords[0];
     currentBlock.position.y -= blockCoords[1];
     currentBlock.position.z -= blockCoords[2];
-    if (index == 1) {
-        currentBlock.rotateOnWorldAxis(new THREE.Vector3(0, 0, 1), Math.PI / 2.0);
-        currentBlock.position.x += 0.5;
-        currentBlock.position.y -= 0.5;
-    } else if (index == 2) {
-        currentBlock.rotateOnWorldAxis(new THREE.Vector3(1, 0, 0), Math.PI / 2.0);
-        currentBlock.position.y += 0.5;
-        currentBlock.position.z -= 0.5;
-    } else if (index == 0) {
-        currentBlock.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), Math.PI / 2.0);
-        currentBlock.position.z += 0.5;
-        currentBlock.position.x -= 0.5;
+    switch(typeBlock) {
+        case "I":
+            rotateI(index, currentBlock);
+            break;
+        default:
+            console.log("Invalid block type");
     }
     currentBlock.position.x += blockCoords[0];
     currentBlock.position.y += blockCoords[1];

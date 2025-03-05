@@ -47,7 +47,8 @@ export function createI(scene) {
     currentBlock.position.y=(19.5);
     currentBlock.position.z=0.5;
     let blockCoords = [0, 19, 0];
-    return [currentBlock, blockCoords, orientation];
+    let typeBlock = "I";
+    return [currentBlock, blockCoords, orientation, typeBlock];
 } 
 
 export function createS(scene) {

@@ -3,7 +3,7 @@ import { updateHighlightPlane, highlightPlane} from './createBlock';
 import { handleDownArrow, handleRightArrow, handleUpArrow, handleLeftArrow, handleSpace, handleShift, handleZ, resetGame } from './controls';
 import { exp } from 'three/tsl';
 
-export function startGame(scene, camera, renderer, controls, clock, grid, currentBlock, orientation, blockCoords, highlight) {
+export function startGame(scene, camera, renderer, controls, clock, grid, currentBlock, orientation, blockCoords, highlight , typeBlock) {
     let animation_time = 0;
     let delta_animation_time;
     let blockStopped = false;
@@ -57,6 +57,7 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
                 }
                 let block = generateRandomBlock(scene);
                 index = 0;
+                
                 // Check if the new block is a magic block
                 isMagicBlock = block[0].isMagicBlock || false;
 
@@ -68,6 +69,7 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
                 currentBlock = block[0];
                 orientation = block[2];
                 blockCoords = block[1];
+                typeBlock = block[3];
                 blockStopped = false;
                 scene.remove(highlight);
                 // Create a new highlight plane for the new block
@@ -106,7 +108,7 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
                 handleShift(currentBlock, blockCoords, index, orientation, grid);
                 break;
             case "z":
-                index = handleZ(currentBlock, blockCoords, index, orientation, grid);
+                index = handleZ(currentBlock, blockCoords, index, orientation, grid, typeBlock);
                 console.log(orientation.length)
                 break;
             default:
