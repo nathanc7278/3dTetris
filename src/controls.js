@@ -118,12 +118,12 @@ export function handleZ(currentBlock, blockCoords, index, orientation, grid) {
         currentBlock.position.z -= 0.5;
     } else if (index == 0) {
         currentBlock.rotateOnWorldAxis(new THREE.Vector3(0, 1, 0), Math.PI / 2.0);
+        currentBlock.position.z += 0.5;
+        currentBlock.position.x -= 0.5;
     }
     currentBlock.position.x += blockCoords[0];
     currentBlock.position.y += blockCoords[1];
     currentBlock.position.z += blockCoords[2];
-    
-    
     return index;
     
 }

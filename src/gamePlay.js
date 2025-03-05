@@ -25,9 +25,9 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
             }
         }
 
-        let speedMultiplier = isMagicBlock ? 0.5 : 0.2;
+        let speedMultiplier = isMagicBlock ? 0.51 : 0.2;
 
-        if (animation_time > 2 * speedMultiplier) {
+        if (animation_time > 2 / speedMultiplier) {
             animation_time = 0;
             for (let i = 0; i < orientation[index].length; i++) {
                 if ((blockCoords[1] + orientation[index][i][1] - 1 < 0) ||
@@ -107,7 +107,7 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
                 break;
             case "z":
                 index = handleZ(currentBlock, blockCoords, index, orientation, grid);
-                console.log(index)
+                console.log(orientation.length)
                 break;
             default:
                 console.log(`Key ${event.key} pressed`);
