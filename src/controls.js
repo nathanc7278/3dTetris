@@ -76,16 +76,16 @@ export function handleShift(currentBlock, blockCoords, index, orientation, grid)
                      [blockCoords[1] + orientation[index][i][1] - 1]
                      [blockCoords[2] + orientation[index][i][2]] !== 0)) {
                     atBottom = true;
-                    break;
             } 
-            blockCoords[1] = blockCoords[1] - 1;
-            currentBlock.position.y -= 1; 
-        }   
+            if (atBottom) {
+                break;
+            }
+        }  
         if (atBottom) {
-            break;
+            return;
         }
         blockCoords[1] = blockCoords[1] - 1;
-        currentBlock.position.y -= 1; 
+        currentBlock.position.y -= 1;     
     }
 }
 
