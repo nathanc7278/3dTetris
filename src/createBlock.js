@@ -69,21 +69,22 @@ export function createS(scene) {
                 [2, 1, 0]];
     let orientation = [];
     orientation.push(temp);
-    temp = [[0, 2, 0],
-            [0, 1, 0],
-            [1, 1, 0],
-            [1, 0, 0]];
+    temp = [[1, -1, 0],
+            [1, 0, 0],
+            [0, 0, 0],
+            [0, 1, 0]];
     orientation.push(temp);
-    temp = [[1, 0, 0],
-            [1, 0, 1],
+    temp = [[1, 0, -1],
+            [1, 0, 0],
             [0, 0, 1],
-            [0, 0, 2]];
+            [0, 0, 1]];
     orientation.push(temp);
-    currentBlock.translateY(19.5);
+    currentBlock.translateY(18.5);
     currentBlock.translateZ(0.5);
-    currentBlock.translateX(2);
-    let blockCoords = [2, 19, 0];
-    return [currentBlock, blockCoords, orientation];
+    currentBlock.translateX(1);
+    let blockCoords = [0, 18, 0];
+    let typeBlock = "S";
+    return [currentBlock, blockCoords, orientation, typeBlock];
 }
 
 export function createZ(scene) {
