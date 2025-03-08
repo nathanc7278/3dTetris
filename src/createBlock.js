@@ -109,21 +109,31 @@ export function createZ(scene) {
     let currentBlock = new THREE.Mesh(mergeGeometry, material);
     scene.add(currentBlock);
 
-    let temp = [[0, 1, 0],      
+    let temp = [[0, 1, 0],
                 [1, 1, 0],
                 [1, 0, 0],
-                [2, 0, 0]];                
+                [2, 0, 0]];
     let orientation = [];
     orientation.push(temp);
-    temp = [[1, -1, 0],
+    temp = [[1, 1, -1],
+            [1, 1, 0],
             [1, 0, 0],
-            [2, 0, 0],
-            [2, 1, 0]];
+            [1, 0, 1]];
     orientation.push(temp);
-    temp = [[1, 0, 1],
+    temp = [[1, 1, -1],
+            [1, 0, -1],
             [1, 0, 0],
-            [2, 0, 0],
-            [2, 0, -1]];
+            [1, -1, 0]];
+    orientation.push(temp);
+    temp = [[1, 1, 0],
+            [1, 0, 0],
+            [0, 0, 0],
+            [0, -1, 0]];
+    orientation.push(temp);
+    temp = [[0, 0, 1],
+            [0, 0, 0],
+            [1, 0, 0],
+            [1, 0, -1]];
     orientation.push(temp);
     currentBlock.translateY(18.5);
     currentBlock.translateZ(0.5);
