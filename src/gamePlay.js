@@ -28,7 +28,7 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
             speedMultiplier = 1;
         }
 
-        let speedMultiplier = isMagicBlock ? 0.50 : 0.2;
+        speedMultiplier = isMagicBlock ? 0.50 : 0.2;
 
         if (animation_time > 2 * speedMultiplier) {
             animation_time = 0;

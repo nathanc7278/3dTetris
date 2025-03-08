@@ -43,10 +43,10 @@ export function createI(scene) {
             [2, 0, 0],
             [2, 0, 1]];
     orientation.push(temp);
-    currentBlock.translateY(19);
-    currentBlock.translateZ(4.5);
-    currentBlock.translateX(4.5);
-    let blockCoords = [4, 19, 4];
+    currentBlock.position.x=(2);
+    currentBlock.position.y=(19.5);
+    currentBlock.position.z=0.5;
+    let blockCoords = [0, 19, 0];
     let typeBlock = "I";
     return [currentBlock, blockCoords, orientation, typeBlock];
 } 
@@ -90,9 +90,9 @@ export function createS(scene) {
             [2, 0, -2]];
     orientation.push(temp);
     currentBlock.translateY(18.5);
-    currentBlock.translateZ(4.5);
-    currentBlock.translateX(4.5);
-    let blockCoords = [4, 18, 4];
+    currentBlock.translateZ(0.5);
+    currentBlock.translateX(1);
+    let blockCoords = [0, 18, 0];
     let typeBlock = "S";
     return [currentBlock, blockCoords, orientation, typeBlock];
 }
@@ -382,13 +382,13 @@ export function createMagicBlock(scene) {
     let currentBlock = new THREE.Mesh(geometry, material);
     scene.add(currentBlock);
     let temp = [[0, 0, 0],
-                [0, 1, 0],
-                [1, 0, 0],
-                [1, 1, 0],
-                [0, 0, 1],
-                [0, 1, 1],
-                [1, 0, 1],
-                [1, 1, 1]];                
+                 [0, 1, 0],
+                 [1, 0, 0],
+                 [1, 1, 0],
+                 [0, 0, 1],
+                 [0, 1, 1],
+                 [1, 0, 1],
+                 [1, 1, 1]];                
     let orientation = [];
     orientation.push(temp);
     currentBlock.position.y += 19;
@@ -396,14 +396,13 @@ export function createMagicBlock(scene) {
     currentBlock.position.z += 1;
     let blockCoords = [0, 18, 0];
     let typeBlock = "M";
-    
-    
-                       
+
     // Update the time uniform in the render loop
     function animate() {
         requestAnimationFrame(animate);
         material.uniforms.time.value += 0.05;
     }
     animate();
+
     return [currentBlock, blockCoords, orientation, typeBlock];
 }
