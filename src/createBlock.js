@@ -99,27 +99,28 @@ export function createZ(scene) {
     let currentBlock = new THREE.Mesh(mergeGeometry, material);
     scene.add(currentBlock);
 
-    let temp = [[0, 0, 0],      // needs fix
+    let temp = [[0, 1, 0],      
+                [1, 1, 0],
                 [1, 0, 0],
-                [2, 0, 0],
-                [3, 0, 0]];                
+                [2, 0, 0]];                
     let orientation = [];
     orientation.push(temp);
-    temp = [[0, 0, 0],
-            [0, 1, 0],
-            [0, 2, 0],
-            [0, 3, 0]];
+    temp = [[1, -1, 0],
+            [1, 0, 0],
+            [2, 0, 0],
+            [2, 1, 0]];
     orientation.push(temp);
-    temp = [[0, 0, 1],
-            [0, 0, 2],
-            [0, 0, 3],
-            [0, 0, 4]];
+    temp = [[1, 0, 0],
+            [1, 0, -1],
+            [2, 0, -1],
+            [2, 0, -2]];
     orientation.push(temp);
-    currentBlock.translateY(19.5);
+    currentBlock.translateY(18.5);
     currentBlock.translateZ(0.5);
     currentBlock.translateX(2);
-    let blockCoords = [0, 19, 0];
-    return [currentBlock, blockCoords, orientation];
+    let blockCoords = [0, 18, 0];
+    let typeBlock = "Z";
+    return [currentBlock, blockCoords, orientation, typeBlock];
 }
 
 export function createT(scene){
