@@ -1,5 +1,5 @@
 import * as THREE from 'three';
-import { rotateI, rotateS, rotateZ } from './rotation';
+import { rotateI, rotateS, rotateZ, rotateT, rotateL, rotateJ, rotateO} from './rotation';
 
 export function handleDownArrow(currentBlock, blockCoords, index, orientation, grid) {
     for (let i = 0; i < orientation[index].length; i++) {
@@ -119,8 +119,18 @@ export function handleZ(currentBlock, blockCoords, index, orientation, grid, typ
         case "Z":
             rotateZ(index, currentBlock);
             break;
+        case "T":
+            rotateT(index, currentBlock);
+            break;
+        case "L":
+            rotateL(index, currentBlock);
+            break;
+        case "J":
+            rotateJ(index, currentBlock);
+        case "O":
+            rotateO(index, currentBlock);
         default:
-            console.log("Invalid block type");
+            console.log("Invalid block type:", typeBlock);
     }
     currentBlock.position.x += blockCoords[0];
     currentBlock.position.y += blockCoords[1];
