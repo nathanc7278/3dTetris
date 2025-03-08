@@ -124,8 +124,10 @@ export function handleZ(currentBlock, blockCoords, index, orientation, grid, typ
             break;
         case "J":
             rotateJ(index, currentBlock);
+            break;
         case "O":
             rotateO(index, currentBlock);
+            break;
         default:
             console.log("Invalid block type:", typeBlock);
     }
