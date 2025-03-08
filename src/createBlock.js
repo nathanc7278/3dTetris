@@ -310,7 +310,6 @@ export function createJ(scene){
             [1, 0, 1],
             [1, -1, 1]];
     orientation.push(temp);
-    
     currentBlock.translateY(18.5);
     currentBlock.translateZ(0.5);
     currentBlock.translateX(1.5);
@@ -325,34 +324,25 @@ export function createO(scene){
 
     let currentBlock = new THREE.Mesh( geometry1, material );
     scene.add(currentBlock);
-
-    let temp = [
-        [0, 0, 0],  // Bottom-left
-        [1, 0, 0],  // Bottom-right
-        [0, 1, 0],  // Top-left
-        [1, 1, 0]   // Top-right
-    ];                
+    let temp = [[0, 0, 0],
+                [1, 0, 0],
+                [0, 1, 0],
+                [1, 1, 0]];                
     let orientation = [];
     orientation.push(temp);
-    
-    temp = [
-        [0, 0, 0],  // Front-bottom
-        [0, 1, 0],  // Front-top
-        [0, 0, 1],  // Back-bottom
-        [0, 1, 1]   // Back-top
-    ];
+    temp = [[1, 0, -1],
+            [1, 0, -1],
+            [1, 1, 0],
+            [1, 1, 0]];
     orientation.push(temp);
-    
-    temp = [
-        [0, 0, 0],  // Left-front
-        [1, 0, 0],  // Right-front
-        [0, 0, 1],  // Left-back
-        [1, 0, 1]   // Right-back
-    ];
+    temp = [[0, 0, -1],
+            [0, 0, -1],
+            [1, 0, 0],
+            [1, 0, 0]];
     orientation.push(temp);
-    currentBlock.position.y += 18.5;
+    currentBlock.position.y += 19;
+    currentBlock.position.x += 1;
     currentBlock.position.z += 0.5;
-    currentBlock.position.z += 1.0;
     let blockCoords = [0, 18, 0];
     let typeBlock = "O";
     return [currentBlock, blockCoords, orientation, typeBlock];
