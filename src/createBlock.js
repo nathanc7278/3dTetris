@@ -110,10 +110,10 @@ export function createZ(scene) {
             [2, 0, 0],
             [2, 1, 0]];
     orientation.push(temp);
-    temp = [[1, 0, 0],
-            [1, 0, -1],
-            [2, 0, -1],
-            [2, 0, -2]];
+    temp = [[1, 0, 1],
+            [1, 0, 0],
+            [2, 0, 0],
+            [2, 0, -1]];
     orientation.push(temp);
     currentBlock.translateY(18.5);
     currentBlock.translateZ(0.5);
@@ -136,29 +136,63 @@ export function createT(scene){
     let currentBlock = new THREE.Mesh(mergeGeometry, material);
     scene.add(currentBlock);
 
-    let temp = [[0, 0, 0],  // Main horizontal line
+    let temp = [[0, 0, 0],  
                 [1, 0, 0],
                 [2, 0, 0],
-                [1, 1, 0]]; // Top center                
+                [1, 1, 0]];              
     let orientation = [];
     orientation.push(temp);
-    
-    temp = [[1, -1, 0],  // Vertical orientation
+    temp = [[1, -1, 0],
             [1, 0, 0],
             [1, 1, 0],
-            [0, 0, 0]]; // Left center
+            [2, 0, 0]];
     orientation.push(temp);
     
-    temp = [[1, 0, -1],  // Depth orientation
+    temp = [[0, 0, 0],  
+            [1, 0, 0],
+            [2, 0, 0],
+            [1, -1, 0]];   
+    orientation.push(temp);
+    temp = [[1, -1, 0],  
+            [1, 0, 0],
+            [1, 1, 0],
+            [2, 0, 0]];   
+    orientation.push(temp);
+    temp = [[1, -1, 0],  
+            [1, 0, 0],
+            [1, 1, 0],
+            [1, 0, 1]];  
+    orientation.push(temp);
+    temp = [[1, -1, 0],  
+            [1, 0, 0],
+            [1, 1, 0],
+            [1, 0, -1]];  
+    orientation.push(temp);
+    temp = [[0, 0, 0],  
+            [1, 0, 0],
+            [2, 0, 0],
+            [1, 0, -1]];  
+    orientation.push(temp);
+    temp = [[1, 0, -1],  
             [1, 0, 0],
             [1, 0, 1],
-            [0, 0, 0]]; // Front center
+            [0, 0, 0]];  
     orientation.push(temp);
-
+    temp = [[1, 0, -1],  
+            [1, 0, 0],
+            [2, 0, 0],
+            [1, 0, 1]];  
+    orientation.push(temp);
+    temp = [[1, 0, -1],  
+            [1, 0, 0],
+            [1, 0, 1],
+            [2, 0, 0]];  
+    orientation.push(temp);
+    
     
     currentBlock.translateY(18.5);
     currentBlock.translateZ(0.5);
-    currentBlock.translateX(1);
+    currentBlock.translateX(1.5);
     let blockCoords = [0, 18, 0];
     let typeBlock = "T";
     return [currentBlock, blockCoords, orientation, typeBlock];
