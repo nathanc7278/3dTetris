@@ -12,20 +12,21 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
     let isMagicBlock = false;
     let magicBlockTimer = 0;
     let index = 0;
-    
+    let speedMultiplier = 1;
     function animate() {
         delta_animation_time = clock.getDelta();
         animation_time += delta_animation_time;
 
         if (isMagicBlock) {
+            speedMultiplier = 2;
             magicBlockTimer += delta_animation_time;
             if (magicBlockTimer > 5) {
                 isMagicBlock = false;
                 magicBlockTimer = 0;
             }
+        } else {
+            speedMultiplier = 1;
         }
-
-        let speedMultiplier = isMagicBlock ? 0.50 : 0.2;
 
         if (animation_time > 2 / speedMultiplier) {
             animation_time = 0;

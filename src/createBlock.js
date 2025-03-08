@@ -43,10 +43,10 @@ export function createI(scene) {
             [2, 0, 0],
             [2, 0, 1]];
     orientation.push(temp);
-    currentBlock.position.x=(2);
-    currentBlock.position.y=(19.5);
-    currentBlock.position.z=0.5;
-    let blockCoords = [0, 19, 0];
+    currentBlock.translateY(19);
+    currentBlock.translateZ(4.5);
+    currentBlock.translateX(4.5);
+    let blockCoords = [4, 19, 4];
     let typeBlock = "I";
     return [currentBlock, blockCoords, orientation, typeBlock];
 } 
@@ -80,9 +80,9 @@ export function createS(scene) {
             [0, 0, 1]];
     orientation.push(temp);
     currentBlock.translateY(18.5);
-    currentBlock.translateZ(0.5);
-    currentBlock.translateX(1);
-    let blockCoords = [0, 18, 0];
+    currentBlock.translateZ(4.5);
+    currentBlock.translateX(4.5);
+    let blockCoords = [4, 18, 4];
     let typeBlock = "S";
     return [currentBlock, blockCoords, orientation, typeBlock];
 }
@@ -295,13 +295,13 @@ export function createMagicBlock(scene) {
     scene.add(magicBlock);
 
     magicBlock.translateY(19);
-    magicBlock.translateZ(4.5);
+    magicBlock.translateZ(5);
     magicBlock.translateX(5);
-    let blockCoords = [[4, 18, 4],
-                       [5, 18, 4],
-                       [4, 19, 4],
-                       [5, 19, 4]];
-
+    let blockCoords = [5, 19, 4];
+    let orientation = [[[0, 0, 0],
+                        [1, 0, 0],
+                        [2, 0, 0],
+                        [3, 0, 0]]];
     // Update the time uniform in the render loop
     function animate() {
         requestAnimationFrame(animate);
@@ -309,5 +309,5 @@ export function createMagicBlock(scene) {
     }
     animate();
 
-    return [magicBlock, blockCoords];
+    return [magicBlock, blockCoords, orientation];
 }
