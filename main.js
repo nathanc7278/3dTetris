@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { setupBoard, instructions, initialScore } from './src/initialize';
-import { createT, highlightPlane } from './src/createBlock';
+import { createS, highlightPlane } from './src/createBlock';
 import { startGame } from './src/gamePlay';
 
 instructions();
@@ -21,7 +21,7 @@ controls.target.set(0, 5, 0);
 const clock = new THREE.Clock();
 let grid = setupBoard(scene);
 
-let block = createT(scene);
+let block = createS(scene);
 let currentBlock = block[0];
 let orientation = block[2];
 let blockCoords = block[1];

@@ -69,15 +69,25 @@ export function createS(scene) {
                 [2, 1, 0]];
     let orientation = [];
     orientation.push(temp);
-    temp = [[1, -1, 0],
-            [1, 0, 0],
-            [0, 0, 0],
-            [0, 1, 0]];
-    orientation.push(temp);
     temp = [[1, 0, -1],
             [1, 0, 0],
-            [0, 0, 1],
-            [0, 0, 1]];
+            [1, 1, 0],
+            [1, 1, 1]];
+    orientation.push(temp);
+    temp = [[1, 1, -1],
+            [1, 0, -1],
+            [1, 0, 0],
+            [1, -1, 0]];
+    orientation.push(temp);
+    temp = [[1, 1, -1],
+            [1, 0, -1],
+            [2, 0, -1],
+            [2, -1, -1]];
+    orientation.push(temp);
+    temp = [[1, 0, 0],
+            [1, 0, -1],
+            [2, 0, -1],
+            [2, 0, -2]];
     orientation.push(temp);
     currentBlock.translateY(18.5);
     currentBlock.translateZ(0.5);
@@ -188,8 +198,6 @@ export function createT(scene){
             [1, 0, 1],
             [2, 0, 0]];  
     orientation.push(temp);
-    
-    
     currentBlock.translateY(18.5);
     currentBlock.translateZ(0.5);
     currentBlock.translateX(1.5);
