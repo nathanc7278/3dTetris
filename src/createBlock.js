@@ -165,7 +165,7 @@ export function createT(scene){
     temp = [[1, -1, 0],
             [1, 0, 0],
             [1, 1, 0],
-            [2, 0, 0]];
+            [0, 0, 0]];
     orientation.push(temp);
     
     temp = [[0, 0, 0],  
@@ -331,13 +331,13 @@ export function createO(scene){
     let orientation = [];
     orientation.push(temp);
     temp = [[1, 0, -1],
-            [1, 0, -1],
+            [1, 0, 0],
             [1, 1, 0],
-            [1, 1, 0]];
+            [1, 1, -1]];
     orientation.push(temp);
     temp = [[0, 0, -1],
-            [0, 0, -1],
-            [1, 0, 0],
+            [0, 0, 0],
+            [1, 0, -1],
             [1, 0, 0]];
     orientation.push(temp);
     currentBlock.position.y += 19;
