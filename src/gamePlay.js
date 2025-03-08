@@ -27,7 +27,7 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
 
         let speedMultiplier = isMagicBlock ? 0.50 : 0.2;
 
-        if (animation_time > 2 / speedMultiplier) {
+        if (animation_time > 2 * speedMultiplier) {
             animation_time = 0;
             for (let i = 0; i < orientation[index].length; i++) {
                 if ((blockCoords[1] + orientation[index][i][1] - 1 < 0) ||

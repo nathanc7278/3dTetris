@@ -379,23 +379,31 @@ export function createMagicBlock(scene) {
         flatShading: true
     });
 
-    let magicBlock = new THREE.Mesh(geometry, material);
-    scene.add(magicBlock);
-
-    magicBlock.translateY(18);
-    magicBlock.translateZ(1);
-    magicBlock.translateX(5);
-    let blockCoords = [[4, 18, 4],
-                       [5, 18, 4],
-                       [4, 19, 4],
-                       [5, 19, 4]];
-
+    let currentBlock = new THREE.Mesh(geometry, material);
+    scene.add(currentBlock);
+    let temp = [[0, 0, 0],
+                [0, 1, 0],
+                [1, 0, 0],
+                [1, 1, 0],
+                [0, 0, 1],
+                [0, 1, 1],
+                [1, 0, 1],
+                [1, 1, 1]];                
+    let orientation = [];
+    orientation.push(temp);
+    currentBlock.position.y += 19;
+    currentBlock.position.x += 1;
+    currentBlock.position.z += 1;
+    let blockCoords = [0, 18, 0];
+    let typeBlock = "M";
+    
+    
+                       
     // Update the time uniform in the render loop
     function animate() {
         requestAnimationFrame(animate);
         material.uniforms.time.value += 0.05;
     }
     animate();
-
-    return [magicBlock, blockCoords];
+    return [currentBlock, blockCoords, orientation, typeBlock];
 }
