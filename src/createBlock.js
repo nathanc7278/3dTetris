@@ -165,7 +165,7 @@ export function createT(scene){
     temp = [[1, -1, 0],
             [1, 0, 0],
             [1, 1, 0],
-            [2, 0, 0]];
+            [0, 0, 0]];
     orientation.push(temp);
     
     temp = [[0, 0, 0],  
