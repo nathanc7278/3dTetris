@@ -69,15 +69,25 @@ export function createS(scene) {
                 [2, 1, 0]];
     let orientation = [];
     orientation.push(temp);
-    temp = [[1, -1, 0],
-            [1, 0, 0],
-            [0, 0, 0],
-            [0, 1, 0]];
-    orientation.push(temp);
     temp = [[1, 0, -1],
             [1, 0, 0],
-            [0, 0, 1],
-            [0, 0, 1]];
+            [1, 1, 0],
+            [1, 1, 1]];
+    orientation.push(temp);
+    temp = [[1, 1, -1],
+            [1, 0, -1],
+            [1, 0, 0],
+            [1, -1, 0]];
+    orientation.push(temp);
+    temp = [[1, 1, -1],
+            [1, 0, -1],
+            [2, 0, -1],
+            [2, -1, -1]];
+    orientation.push(temp);
+    temp = [[1, 0, 0],
+            [1, 0, -1],
+            [2, 0, -1],
+            [2, 0, -2]];
     orientation.push(temp);
     currentBlock.translateY(18.5);
     currentBlock.translateZ(4.5);
@@ -99,27 +109,38 @@ export function createZ(scene) {
     let currentBlock = new THREE.Mesh(mergeGeometry, material);
     scene.add(currentBlock);
 
-    let temp = [[0, 0, 0],      // needs fix
+    let temp = [[0, 1, 0],
+                [1, 1, 0],
                 [1, 0, 0],
-                [2, 0, 0],
-                [3, 0, 0]];                
+                [2, 0, 0]];
     let orientation = [];
     orientation.push(temp);
-    temp = [[0, 0, 0],
-            [0, 1, 0],
-            [0, 2, 0],
-            [0, 3, 0]];
+    temp = [[1, 1, -1],
+            [1, 1, 0],
+            [1, 0, 0],
+            [1, 0, 1]];
+    orientation.push(temp);
+    temp = [[1, 1, -1],
+            [1, 0, -1],
+            [1, 0, 0],
+            [1, -1, 0]];
+    orientation.push(temp);
+    temp = [[1, 1, 0],
+            [1, 0, 0],
+            [0, 0, 0],
+            [0, -1, 0]];
     orientation.push(temp);
     temp = [[0, 0, 1],
-            [0, 0, 2],
-            [0, 0, 3],
-            [0, 0, 4]];
+            [0, 0, 0],
+            [1, 0, 0],
+            [1, 0, -1]];
     orientation.push(temp);
-    currentBlock.translateY(19.5);
+    currentBlock.translateY(18.5);
     currentBlock.translateZ(0.5);
     currentBlock.translateX(2);
-    let blockCoords = [0, 19, 0];
-    return [currentBlock, blockCoords, orientation];
+    let blockCoords = [0, 18, 0];
+    let typeBlock = "Z";
+    return [currentBlock, blockCoords, orientation, typeBlock];
 }
 
 export function createT(scene){
@@ -135,27 +156,64 @@ export function createT(scene){
     let currentBlock = new THREE.Mesh(mergeGeometry, material);
     scene.add(currentBlock);
 
-    let temp = [[0, 0, 0],      // needs fix
+    let temp = [[0, 0, 0],  
                 [1, 0, 0],
                 [2, 0, 0],
-                [3, 0, 0]];                
+                [1, 1, 0]];              
     let orientation = [];
     orientation.push(temp);
-    temp = [[0, 0, 0],
-            [0, 1, 0],
-            [0, 2, 0],
-            [0, 3, 0]];
+    temp = [[1, -1, 0],
+            [1, 0, 0],
+            [1, 1, 0],
+            [2, 0, 0]];
     orientation.push(temp);
-    temp = [[0, 0, 1],
-            [0, 0, 2],
-            [0, 0, 3],
-            [0, 0, 4]];
+    
+    temp = [[0, 0, 0],  
+            [1, 0, 0],
+            [2, 0, 0],
+            [1, -1, 0]];   
     orientation.push(temp);
-    currentBlock.translateY(19.5);
+    temp = [[1, -1, 0],  
+            [1, 0, 0],
+            [1, 1, 0],
+            [2, 0, 0]];   
+    orientation.push(temp);
+    temp = [[1, -1, 0],  
+            [1, 0, 0],
+            [1, 1, 0],
+            [1, 0, 1]];  
+    orientation.push(temp);
+    temp = [[1, -1, 0],  
+            [1, 0, 0],
+            [1, 1, 0],
+            [1, 0, -1]];  
+    orientation.push(temp);
+    temp = [[0, 0, 0],  
+            [1, 0, 0],
+            [2, 0, 0],
+            [1, 0, -1]];  
+    orientation.push(temp);
+    temp = [[1, 0, -1],  
+            [1, 0, 0],
+            [1, 0, 1],
+            [0, 0, 0]];  
+    orientation.push(temp);
+    temp = [[1, 0, -1],  
+            [1, 0, 0],
+            [2, 0, 0],
+            [1, 0, 1]];  
+    orientation.push(temp);
+    temp = [[1, 0, -1],  
+            [1, 0, 0],
+            [1, 0, 1],
+            [2, 0, 0]];  
+    orientation.push(temp);
+    currentBlock.translateY(18.5);
     currentBlock.translateZ(0.5);
-    currentBlock.translateX(2);
-    let blockCoords = [0, 19, 0];
-    return [currentBlock, blockCoords, orientation];
+    currentBlock.translateX(1.5);
+    let blockCoords = [0, 18, 0];
+    let typeBlock = "T";
+    return [currentBlock, blockCoords, orientation, typeBlock];
 }
 
 export function createL(scene){
@@ -170,28 +228,43 @@ export function createL(scene){
     let mergeGeometry =  BufferGeometryUtils.mergeGeometries([L1.geometry, L2.geometry], false);
     let currentBlock = new THREE.Mesh(mergeGeometry, material);
     scene.add(currentBlock);
-
-    let temp = [[0, 0, 0],      // needs fix
+    let temp = [[0, 0, 0],
                 [1, 0, 0],
                 [2, 0, 0],
-                [3, 0, 0]];                
+                [2, 1, 0]];                
     let orientation = [];
     orientation.push(temp);
+    temp = [[1, 0, -1],
+            [1, 0, 0],
+            [1, 0, 1],
+            [1, 1, 1]];
+    orientation.push(temp);
+    temp = [[1, 1, 0],
+            [1, 0, 0],
+            [1, -1, 0],
+            [1, -1, 1]];
+    orientation.push(temp);
+    temp = [[1, 1, 0],
+            [1, 0, 0],
+            [1, -1, 0],
+            [2, -1, 0]];
+    orientation.push(temp);
     temp = [[0, 0, 0],
-            [0, 1, 0],
-            [0, 2, 0],
-            [0, 3, 0]];
+            [0, -1, 0],
+            [1, 0, 0],
+            [2, 0, 0]];
     orientation.push(temp);
-    temp = [[0, 0, 1],
-            [0, 0, 2],
-            [0, 0, 3],
-            [0, 0, 4]];
+    temp = [[1, -1, 0],
+            [1, 0, 0],
+            [1, 0, 1],
+            [1, 0, 2]];
     orientation.push(temp);
-    currentBlock.translateY(19.5);
+    currentBlock.translateY(18.5);
     currentBlock.translateZ(0.5);
-    currentBlock.translateX(2);
-    let blockCoords = [0, 19, 0];
-    return [currentBlock, blockCoords, orientation];
+    currentBlock.translateX(1.5);
+    let blockCoords = [0, 18, 0];
+    let typeBlock = "L";
+    return [currentBlock, blockCoords, orientation, typeBlock];
 }
 
 export function createJ(scene){
@@ -206,28 +279,43 @@ export function createJ(scene){
     let mergeGeometry =  BufferGeometryUtils.mergeGeometries([J1.geometry, J2.geometry], false);
     let currentBlock = new THREE.Mesh(mergeGeometry, material);
     scene.add(currentBlock);
-
-    let temp = [[0, 0, 0],      // needs fix
+    let temp = [[0, 1, 0],
+                [0, 0, 0],
                 [1, 0, 0],
-                [2, 0, 0],
-                [3, 0, 0]];                
+                [2, 0, 0]];                
     let orientation = [];
     orientation.push(temp);
-    temp = [[0, 0, 0],
-            [0, 1, 0],
-            [0, 2, 0],
-            [0, 3, 0]];
+    temp = [[1, 1, -1],
+            [1, 0, -1],
+            [1, 0, 0],
+            [1, 0, 1]];
     orientation.push(temp);
-    temp = [[0, 0, 1],
-            [0, 0, 2],
-            [0, 0, 3],
-            [0, 0, 4]];
+    temp = [[1, -1, -1],
+            [1, -1, 0],
+            [1, 0, 0],
+            [1, 1, 0]];
     orientation.push(temp);
-    currentBlock.translateY(19.5);
+    temp = [[0, -1, 0],
+            [1, -1, 0],
+            [1, 0, 0],
+            [1, 1, 0]];
+    orientation.push(temp);
+    temp = [[0, -1, 0],
+            [0, 0, 0],
+            [1, 0, 0],
+            [2, 0, 0]];
+    orientation.push(temp);
+    temp = [[1, 0, -1],
+            [1, 0, 0],
+            [1, 0, 1],
+            [1, -1, 1]];
+    orientation.push(temp);
+    currentBlock.translateY(18.5);
     currentBlock.translateZ(0.5);
-    currentBlock.translateX(2);
-    let blockCoords = [0, 19, 0];
-    return [currentBlock, blockCoords, orientation];
+    currentBlock.translateX(1.5);
+    let blockCoords = [0, 18, 0];
+    let typeBlock = "J";
+    return [currentBlock, blockCoords, orientation, typeBlock];
 }
 
 export function createO(scene){
@@ -236,28 +324,28 @@ export function createO(scene){
 
     let currentBlock = new THREE.Mesh( geometry1, material );
     scene.add(currentBlock);
-
-    let temp = [[0, 0, 0],      // needs fix
+    let temp = [[0, 0, 0],
                 [1, 0, 0],
-                [2, 0, 0],
-                [3, 0, 0]];                
+                [0, 1, 0],
+                [1, 1, 0]];                
     let orientation = [];
     orientation.push(temp);
-    temp = [[0, 0, 0],
-            [0, 1, 0],
-            [0, 2, 0],
-            [0, 3, 0]];
+    temp = [[1, 0, -1],
+            [1, 0, -1],
+            [1, 1, 0],
+            [1, 1, 0]];
     orientation.push(temp);
-    temp = [[0, 0, 1],
-            [0, 0, 2],
-            [0, 0, 3],
-            [0, 0, 4]];
+    temp = [[0, 0, -1],
+            [0, 0, -1],
+            [1, 0, 0],
+            [1, 0, 0]];
     orientation.push(temp);
-    currentBlock.position.y += 19.5;
+    currentBlock.position.y += 19;
+    currentBlock.position.x += 1;
     currentBlock.position.z += 0.5;
-    currentBlock.position.z += 2.0;
-    let blockCoords = [0, 19, 0];
-    return [currentBlock, blockCoords, orientation];
+    let blockCoords = [0, 18, 0];
+    let typeBlock = "O";
+    return [currentBlock, blockCoords, orientation, typeBlock];
 }
 
 export function createMagicBlock(scene) {
@@ -291,23 +379,31 @@ export function createMagicBlock(scene) {
         flatShading: true
     });
 
-    let magicBlock = new THREE.Mesh(geometry, material);
-    scene.add(magicBlock);
-
-    magicBlock.translateY(19);
-    magicBlock.translateZ(5);
-    magicBlock.translateX(5);
-    let blockCoords = [5, 19, 4];
-    let orientation = [[[0, 0, 0],
-                        [1, 0, 0],
-                        [2, 0, 0],
-                        [3, 0, 0]]];
+    let currentBlock = new THREE.Mesh(geometry, material);
+    scene.add(currentBlock);
+    let temp = [[0, 0, 0],
+                [0, 1, 0],
+                [1, 0, 0],
+                [1, 1, 0],
+                [0, 0, 1],
+                [0, 1, 1],
+                [1, 0, 1],
+                [1, 1, 1]];                
+    let orientation = [];
+    orientation.push(temp);
+    currentBlock.position.y += 19;
+    currentBlock.position.x += 1;
+    currentBlock.position.z += 1;
+    let blockCoords = [0, 18, 0];
+    let typeBlock = "M";
+    
+    
+                       
     // Update the time uniform in the render loop
     function animate() {
         requestAnimationFrame(animate);
         material.uniforms.time.value += 0.05;
     }
     animate();
-
-    return [magicBlock, blockCoords, orientation];
+    return [currentBlock, blockCoords, orientation, typeBlock];
 }
