@@ -81,6 +81,7 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
         }
 
         renderer.render(scene, camera);
+        renderer.setClearColor(0x808080 );
         controls.update();
     }
     renderer.setAnimationLoop(animate);

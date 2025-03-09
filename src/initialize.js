@@ -63,7 +63,7 @@ export function setupBoard(scene) { // board will be 10 by 10 by 20
         const material = new THREE.LineBasicMaterial({ 
             color: color,
             transparent: true,
-            opacity: 0.5 
+            opacity: 0.8
         });
         return new THREE.Line(geometry, material);
     };
