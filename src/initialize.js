@@ -52,6 +52,7 @@ export function initialScore() {
 }
 
 export function setupBoard(scene) { // board will be 10 by 10 by 20
+    
     let lightSource = new THREE.PointLight(0xffffff, 1, 0, 1);
     lightSource.position.set(15, 30, 15);
     lightSource.power = 10**3;

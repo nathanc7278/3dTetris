@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { setupBoard, instructions, initialScore } from './src/initialize';
-import { createO, highlightPlane } from './src/createBlock';
+import { createO } from './src/createBlock';
 import { startGame } from './src/gamePlay';
 
 instructions();
@@ -12,6 +12,8 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 document.body.appendChild(renderer.domElement);
 
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -27,9 +29,9 @@ let orientation = block[2];
 let blockCoords = block[1];
 let typeBlock = block[3];
 // Create and store the highlight plane
-let highlight = highlightPlane(scene, currentBlock);
+//let highlight = highlightPlane(scene, currentBlock);
 
-startGame(scene, camera, renderer, controls, clock, grid, currentBlock, orientation, blockCoords, highlight, typeBlock);
+startGame(scene, camera, renderer, controls, clock, grid, currentBlock, orientation, blockCoords, typeBlock);
 
 
 

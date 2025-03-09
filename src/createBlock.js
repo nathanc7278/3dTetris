@@ -22,9 +22,10 @@ export function updateHighlightPlane(plane, block){
 
 export function createI(scene) {
     const geometry = new THREE.BoxGeometry(4, 1, 1);
-    const material = new THREE.MeshPhongMaterial ({color: 0x00ffff, flatShading: true, AmbientLight: 0});
+    const material = new THREE.MeshPhongMaterial ({color: 0x00ffff, flatShading: false, AmbientLight: 0});
 
     let currentBlock = new THREE.Mesh( geometry, material );
+    currentBlock.castShadow = true;
     scene.add(currentBlock);
     
     let temp = [[0, 0, 0],
@@ -54,13 +55,14 @@ export function createI(scene) {
 export function createS(scene) {
     const geometry1 = new THREE.BoxGeometry(2, 1, 1);
     const geometry2 = new THREE.BoxGeometry(2, 1, 1);
-    const material = new THREE.MeshPhongMaterial ({color: 0xff0000, flatShading: true});
+    const material = new THREE.MeshPhongMaterial ({color: 0xff0000, flatShading: false});
 
     geometry2.translate(1, 1, 0);
     let S1 = new THREE.Mesh( geometry1, material );
     let S2 = new THREE.Mesh( geometry2, material );
     let mergeGeometry =  BufferGeometryUtils.mergeGeometries([S1.geometry, S2.geometry], false);
     let currentBlock = new THREE.Mesh(mergeGeometry, material);
+    currentBlock.castShadow = true;
     scene.add(currentBlock);
 
     let temp = [[0, 0, 0],
@@ -100,13 +102,14 @@ export function createS(scene) {
 export function createZ(scene) {
     const geometry1 = new THREE.BoxGeometry(2, 1, 1);
     const geometry2 = new THREE.BoxGeometry(2, 1, 1);
-    const material = new THREE.MeshPhongMaterial ({color: 0xa1fc03, flatShading: true});
+    const material = new THREE.MeshPhongMaterial ({color: 0xa1fc03, flatShading: false});
 
     geometry2.translate(-1, 1, 0);
     let Z1 = new THREE.Mesh( geometry1, material );
     let Z2 = new THREE.Mesh( geometry2, material );
     let mergeGeometry =  BufferGeometryUtils.mergeGeometries([Z1.geometry, Z2.geometry], false);
     let currentBlock = new THREE.Mesh(mergeGeometry, material);
+    currentBlock.castShadow = true;
     scene.add(currentBlock);
 
     let temp = [[0, 1, 0],
@@ -146,7 +149,7 @@ export function createZ(scene) {
 export function createT(scene){
     const geometry1 = new THREE.BoxGeometry(3, 1, 1);
     const geometry2 = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshPhongMaterial ({color: 0xff00ff, flatShading: true});
+    const material = new THREE.MeshPhongMaterial ({color: 0xff00ff, flatShading: false});
 
     geometry2.translate(0,1,0)
 
@@ -154,6 +157,7 @@ export function createT(scene){
     let T2 = new THREE.Mesh( geometry2, material );
     let mergeGeometry =  BufferGeometryUtils.mergeGeometries([T1.geometry, T2.geometry], false);
     let currentBlock = new THREE.Mesh(mergeGeometry, material);
+    currentBlock.castShadow = true;
     scene.add(currentBlock);
 
     let temp = [[0, 0, 0],  
@@ -219,7 +223,7 @@ export function createT(scene){
 export function createL(scene){
     const geometry1 = new THREE.BoxGeometry(3,1,1);
     const geometry2 = new THREE.BoxGeometry(1,1,1);
-    const material = new THREE.MeshPhongMaterial ({color: 0x32CD32, flatShading: true});
+    const material = new THREE.MeshPhongMaterial ({color: 0x32CD32, flatShading: false});
 
     geometry2.translate(1, 1, 0)
 
@@ -227,6 +231,7 @@ export function createL(scene){
     let L2 = new THREE.Mesh( geometry2, material );
     let mergeGeometry =  BufferGeometryUtils.mergeGeometries([L1.geometry, L2.geometry], false);
     let currentBlock = new THREE.Mesh(mergeGeometry, material);
+    currentBlock.castShadow = true;
     scene.add(currentBlock);
     let temp = [[0, 0, 0],
                 [1, 0, 0],
@@ -270,7 +275,7 @@ export function createL(scene){
 export function createJ(scene){
     const geometry1 = new THREE.BoxGeometry(3,1,1);
     const geometry2 = new THREE.BoxGeometry(1,1,1);
-    const material = new THREE.MeshPhongMaterial ({color: 0x0000ff, flatShading: true});
+    const material = new THREE.MeshPhongMaterial ({color: 0x0000ff, flatShading: false});
 
     geometry2.translate(-1,1,0)
 
@@ -278,6 +283,7 @@ export function createJ(scene){
     let J2 = new THREE.Mesh( geometry2, material );
     let mergeGeometry =  BufferGeometryUtils.mergeGeometries([J1.geometry, J2.geometry], false);
     let currentBlock = new THREE.Mesh(mergeGeometry, material);
+    currentBlock.castShadow = true;
     scene.add(currentBlock);
     let temp = [[0, 1, 0],
                 [0, 0, 0],
@@ -320,9 +326,10 @@ export function createJ(scene){
 
 export function createO(scene){
     const geometry1 = new THREE.BoxGeometry(2,2,1);
-    const material = new THREE.MeshPhongMaterial ({color: 0xFFA500, flatShading: true});
+    const material = new THREE.MeshPhongMaterial ({color: 0xFFA500, flatShading: false});
 
     let currentBlock = new THREE.Mesh( geometry1, material );
+    currentBlock.castShadow = true;
     scene.add(currentBlock);
     let temp = [[0, 0, 0],
                 [1, 0, 0],
@@ -374,12 +381,15 @@ export function createMagicBlock(scene) {
         },
         vertexShader: vertexShader,
         fragmentShader: fragmentShader,
+        transparent: true, 
+        alphaTest: 0.5,
         emissive: 0xcccccc,
         emissiveIntensity: 1,
-        flatShading: true
+        flatShading: false
     });
 
     let currentBlock = new THREE.Mesh(geometry, material);
+    currentBlock.castShadow = true;
     scene.add(currentBlock);
     let temp = [[0, 0, 0],
                  [0, 1, 0],
