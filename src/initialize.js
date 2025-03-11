@@ -51,14 +51,15 @@ export function initialScore() {
     return score;
 }
 
-export function setupBoard(scene) { // board will be 10 by 10 by 20
-    
-    let lightSource = new THREE.PointLight(0xffffff, 1, 0, 1);
+export function setupBoard(scene) {
+    let lightSource = new THREE.PointLight(0xffffff, 1000, 0, 1);
     lightSource.position.set(15, 30, 15);
     lightSource.power = 10**3;
-    const light = new THREE.AmbientLight( 0x404040 ); // soft white light
-    scene.add( light );
+    lightSource.castShadow = true;  // Ensure light casts shadows
+    const ambientLight = new THREE.AmbientLight( 0x404040 ); // soft white light
+    scene.add(ambientLight);
     scene.add(lightSource);
+
     const createLine = (color, start, end) => {
         const geometry = new THREE.BufferGeometry().setFromPoints([start, end]);
         const material = new THREE.LineBasicMaterial({ 
@@ -68,6 +69,7 @@ export function setupBoard(scene) { // board will be 10 by 10 by 20
         });
         return new THREE.Line(geometry, material);
     };
+
     for (let i = 0; i <= 10; i++) {
         const gridLineX = createLine(0xffffff, new THREE.Vector3(i, 0, 0), new THREE.Vector3(i, 0, 10));
         const gridLineZ = createLine(0xffffff, new THREE.Vector3(0, 0, i), new THREE.Vector3(10, 0, i));
@@ -88,3 +90,4 @@ export function setupBoard(scene) { // board will be 10 by 10 by 20
 
     return grid;
 }
+
