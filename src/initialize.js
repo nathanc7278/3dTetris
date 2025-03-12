@@ -55,7 +55,7 @@ export function setupBoard(scene) {
     let lightSource = new THREE.PointLight(0xffffff, 1000, 0, 1);
     lightSource.position.set(15, 30, 15);
     lightSource.power = 10**3;
-    lightSource.castShadow = true;  // Ensure light casts shadows
+    lightSource.castShadow = true;  // makes sure light casts shadows
     const ambientLight = new THREE.AmbientLight( 0x404040 ); // soft white light
     scene.add(ambientLight);
     scene.add(lightSource);

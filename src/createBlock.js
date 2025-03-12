@@ -22,9 +22,11 @@ export function updateHighlightPlane(plane, block){
 
 export function createI(scene) {
     const geometry = new THREE.BoxGeometry(4, 1, 1);
+    // Load the texture
+    const texture = new THREE.TextureLoader().load('assets/textures/cedar_texture.jpg'); // Specify the texture path here
     const material = new THREE.MeshPhongMaterial({
-        color: 0x00ffff,   
-        shininess: 100,   // controls the specular highlight size
+        map: texture,  
+        shininess: 100,   
         flatShading: false
     });
 
