@@ -1,5 +1,5 @@
 import { generateRandomBlock } from './randomBlocks';
-import { handleDownArrow, handleRightArrow, handleUpArrow, handleLeftArrow, handleSpace, handleShift, handleZ, resetGame } from './controls';
+import { handleDownArrow, handleRightArrow, handleUpArrow, handleLeftArrow, handleSpace, handleShift, handleZ } from './controls';
 import * as THREE from 'three';
 
 export function startGame(scene, camera, renderer, controls, clock, grid, currentBlock, orientation, blockCoords, typeBlock) {
@@ -66,6 +66,7 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
     let magicBlockTimer = 0;
     let index = 0;
     let speedMultiplier = 1;
+    let reset = false;
 
     
     let shadow = createShadow(currentBlock, blockCoords);
@@ -97,26 +98,41 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
                         [blockCoords[1] + orientation[index][i][1] - 1]
                         [blockCoords[2] + orientation[index][i][2]] !== 0)) {
                     blockStopped = true;
-                    if (blockCoords[1] === 19 && blockStopped) {
+                    if (blockCoords[1] > 17 && blockStopped) {
                         alert("Game Over");
-                        resetGame(grid, currentBlock, scene, blocks);
+                        for (let x = 0; x < grid.length; x++) {
+                            for (let y = 0; y < grid[x].length; y++) {
+                                for (let z = 0; z < grid[x][y].length; z++) {
+                                    grid[x][y][z] = 0;
+                                }
+                            }
+                        }
+                        console.log(blocks);
+                        while (blocks.length > 0) {
+                            const block = blocks.pop();
+                            scene.remove(block);
+                        }
                         score = 0; 
+                        blockStopped = false;
+                        reset = true;
                         break;
                     }
                 }
             }
-            if (!blockStopped) {
+            if (!blockStopped && !reset) {
                 blockCoords[1] = blockCoords[1] - 1;
                 currentBlock.position.y -= 1;
                 
                 updateShadow(shadow, currentBlock, blockCoords, orientation, index, grid);
             } else {
-                
-                for (let i = 0; i < orientation[index].length; i++) {
-                    grid[blockCoords[0] + orientation[index][i][0]]
-                        [blockCoords[1] + orientation[index][i][1]]
-                        [blockCoords[2] + orientation[index][i][2]] = 1;
+                if (!reset) {
+                    for (let i = 0; i < orientation[index].length; i++) {
+                        grid[blockCoords[0] + orientation[index][i][0]]
+                            [blockCoords[1] + orientation[index][i][1]]
+                            [blockCoords[2] + orientation[index][i][2]] = 1;
+                    }
                 }
+                reset = false;
                 let block = generateRandomBlock(scene);
                 index = 0;
 

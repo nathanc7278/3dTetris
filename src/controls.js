@@ -134,23 +134,3 @@ export function handleZ(currentBlock, blockCoords, index, orientation, grid, typ
     return index;
     
 }
-
-export function resetGame(grid, scene, blocks) {
-    // Clear the grid
-    for (let x = 0; x < grid.length; x++) {
-        for (let y = 0; y < grid[x].length; y++) {
-            for (let z = 0; z < grid[x][y].length; z++) {
-                grid[x][y][z] = 0;
-            }
-        }
-    }
-
-    // Remove all blocks from the scene
-    while (blocks.length > 0) {
-        const block = blocks.pop();
-        scene.remove(block);
-    }
-    
-    // Reset the current block position
-    return true;
-}
