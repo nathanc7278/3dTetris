@@ -71,6 +71,7 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
     let shadow = createShadow(currentBlock, blockCoords);
 
     function animate() {
+        
         delta_animation_time = clock.getDelta();
         animation_time += delta_animation_time;
 

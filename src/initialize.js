@@ -55,7 +55,7 @@ export function setupBoard(scene) {
     let lightSource = new THREE.PointLight(0xffffff, 1000, 0, 1);
     lightSource.position.set(15, 30, 15);
     lightSource.power = 10**3;
-    lightSource.castShadow = true;  // makes sure light casts shadows
+    lightSource.castShadow = true;  // makes light casts shadows
     const ambientLight = new THREE.AmbientLight( 0x404040 ); // soft white light
     scene.add(ambientLight);
     scene.add(lightSource);
@@ -86,6 +86,43 @@ export function setupBoard(scene) {
         scene.add(gridLineLeftY1);
         scene.add(gridLineRightY1);
     }
+    const wallMaterial = new THREE.MeshStandardMaterial({
+    color: 0x505050, // Dark gray to enhance shadow visibility
+    transparent: true,
+    opacity: 0.8,
+    side: THREE.DoubleSide,
+    metalness: 0.1,
+    roughness: 0.8
+});
+
+// Left border (x=0)
+const leftPlaneGeometry = new THREE.PlaneGeometry(20, 10);
+const leftPlane = new THREE.Mesh(leftPlaneGeometry, wallMaterial);
+leftPlane.rotation.z = Math.PI / 2;
+leftPlane.translateX(10);
+leftPlane.translateY(-5);
+leftPlane.name = 'leftBorder';
+leftPlane.receiveShadow = true;
+scene.add(leftPlane);
+
+// Right border (x=10)
+const rightPlane = leftPlane.clone();
+rightPlane.translateY(5);
+rightPlane.rotation.y = Math.PI / 2;
+rightPlane.translateY(5);
+rightPlane.name = 'rightBorder';
+rightPlane.receiveShadow = true;
+scene.add(rightPlane);
+
+const bottomPlaneGeometry = new THREE.PlaneGeometry(10, 10);
+const bottomPlane = new THREE.Mesh(bottomPlaneGeometry, wallMaterial);
+bottomPlane.rotation.x = Math.PI / 2;
+bottomPlane.translateY(5);
+bottomPlane.translateX(5);
+bottomPlane.name = 'bottomBorder';
+bottomPlane.receiveShadow = true;
+scene.add(bottomPlane);
+
     let grid = Array(10).fill(0).map(()=> Array(20).fill(0).map(()=>Array(10).fill(0)));
 
     return grid;

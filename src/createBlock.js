@@ -23,7 +23,7 @@ export function updateHighlightPlane(plane, block){
 export function createI(scene) {
     const geometry = new THREE.BoxGeometry(4, 1, 1);
     // Load the texture
-    const texture = new THREE.TextureLoader().load('assets/textures/cedar_texture.jpg'); // Specify the texture path here
+    const texture = new THREE.TextureLoader().load('assets/textures/tetris_texture.jpg'); // Specify the texture path here
     const material = new THREE.MeshPhongMaterial({
         map: texture,  
         shininess: 100,   
