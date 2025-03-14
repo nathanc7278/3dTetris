@@ -35,7 +35,7 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
         // Use a dark, semi-transparent material.
         ghost.material = new THREE.MeshBasicMaterial({
             color: 0x00ffff,
-            opacity: 0.5,
+            opacity: 0.2,
             transparent: true,
             
         });
