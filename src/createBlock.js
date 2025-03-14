@@ -7,9 +7,12 @@ export function highlightPlane(scene, block){
         color: 0xffff00,
         side: THREE.DoubleSide,
         emissive: 0xffff00,
-        emissiveIntensity: 1
+        emissiveIntensity: 1,
+        wireframe: true
     });
     const plane = new THREE.Mesh(geometry, material);
+    plane.castShadow = false;
+    plane.receiveShadow = false;
     plane.rotation.x = -Math.PI / 2; 
     plane.position.set(block.position.x, 0, block.position.z);
     scene.add(plane);

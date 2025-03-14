@@ -37,8 +37,10 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
             color: 0x00ffff,
             opacity: 0.5,
             transparent: true,
-            depthWrite: false
+            
         });
+        ghost.castShadow = false;
+        ghost.receiveShadow = false;
         // Use the vertical offset between the block’s world y and its grid y
         const offsetY = block.position.y - blockCoords[1];
         // Set initial y to the ghost landing y plus the same offset.

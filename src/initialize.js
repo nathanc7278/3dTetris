@@ -64,8 +64,8 @@ export function setupBoard(scene) {
         const geometry = new THREE.BufferGeometry().setFromPoints([start, end]);
         const material = new THREE.LineBasicMaterial({ 
             color: color,
-            transparent: true,
-            opacity: 0.8
+            transparent: false,
+            opacity: 1.0
         });
         return new THREE.Line(geometry, material);
     };
