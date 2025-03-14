@@ -25,7 +25,7 @@ export function createI(scene) {
     // Load the texture
     const texture = new THREE.TextureLoader().load('assets/textures/tetris_texture.jpg'); // Specify the texture path here
     const material = new THREE.MeshPhongMaterial({
-        map: texture,  
+        color: 0xffff,  
         shininess: 100,   
         flatShading: false
     });
@@ -110,7 +110,7 @@ export function createS(scene) {
 export function createZ(scene) {
     const geometry1 = new THREE.BoxGeometry(2, 1, 1);
     const geometry2 = new THREE.BoxGeometry(2, 1, 1);
-    const material = new THREE.MeshPhongMaterial ({color: 0xa1fc03, shininess: 100, flatShading: false});
+    const material = new THREE.MeshPhongMaterial ({color: 0x00ff00, shininess: 100, flatShading: false});
 
     geometry2.translate(-1, 1, 0);
     let Z1 = new THREE.Mesh( geometry1, material );
@@ -158,7 +158,7 @@ export function createZ(scene) {
 export function createT(scene){
     const geometry1 = new THREE.BoxGeometry(3, 1, 1);
     const geometry2 = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshPhongMaterial ({color: 0xff00ff, shininess: 100, flatShading: false});
+    const material = new THREE.MeshPhongMaterial ({color: 0x800080, shininess: 100, flatShading: false});
 
     geometry2.translate(0,1,0)
 
@@ -233,7 +233,7 @@ export function createT(scene){
 export function createL(scene){
     const geometry1 = new THREE.BoxGeometry(3,1,1);
     const geometry2 = new THREE.BoxGeometry(1,1,1);
-    const material = new THREE.MeshPhongMaterial ({color: 0x32CD32, shininess: 100, flatShading: false});
+    const material = new THREE.MeshPhongMaterial ({color: 0xff7f00, shininess: 100, flatShading: false});
 
     geometry2.translate(1, 1, 0)
 
@@ -338,7 +338,7 @@ export function createJ(scene){
 
 export function createO(scene){
     const geometry1 = new THREE.BoxGeometry(2,2,1);
-    const material = new THREE.MeshPhongMaterial ({color: 0xFFA500, shininess: 100, flatShading: false});
+    const material = new THREE.MeshPhongMaterial ({color: 0xFFFF00, shininess: 100, flatShading: false});
 
     let currentBlock = new THREE.Mesh( geometry1, material );
     currentBlock.castShadow = true;
