@@ -1,27 +1,6 @@
 import * as THREE from 'three';
 import * as BufferGeometryUtils from "three/examples/jsm/utils/BufferGeometryUtils.js"
 
-export function highlightPlane(scene, block){
-    const geometry = new THREE.PlaneGeometry(1, 1);
-    const material = new THREE.MeshBasicMaterial({
-        color: 0xffff00,
-        side: THREE.DoubleSide,
-        emissive: 0xffff00,
-        emissiveIntensity: 1,
-        wireframe: true
-    });
-    const plane = new THREE.Mesh(geometry, material);
-    plane.castShadow = false;
-    plane.receiveShadow = false;
-    plane.rotation.x = -Math.PI / 2; 
-    plane.position.set(block.position.x, 0, block.position.z);
-    scene.add(plane);
-    return plane;
-}
-
-export function updateHighlightPlane(plane, block){
-    plane.position.set(block.position.x, 0, block.position.z);
-}
 
 export function createI(scene) {
     const geometry = new THREE.BoxGeometry(4, 1, 1);
