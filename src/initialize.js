@@ -87,7 +87,7 @@ export function setupBoard(scene) {
         scene.add(gridLineRightY1);
     }
     const wallMaterial = new THREE.MeshStandardMaterial({
-    color: 0x505050, // Dark gray to enhance shadow visibility
+    color: 0x909090, // Dark gray to enhance shadow visibility
     transparent: true,
     opacity: 0.8,
     side: THREE.DoubleSide,

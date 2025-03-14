@@ -34,7 +34,7 @@ export function startGame(scene, camera, renderer, controls, clock, grid, curren
         const ghost = block.clone();
         // Use a dark, semi-transparent material.
         ghost.material = new THREE.MeshBasicMaterial({
-            color: 0xffff00,
+            color: 0x00ffff,
             opacity: 0.5,
             transparent: true,
             depthWrite: false
